@@ -19,4 +19,14 @@ public class RoundManager : MonoBehaviour
     {
         CardPool._Instance.ChosenCard(randomValue);
     }
+    [ContextMenu("触发")]
+    public void Award()
+    {
+        CardPool._Instance.AwardCards();
+    }
+    [ContextMenu("结算")]
+    public void Settle()
+    {
+        CardPool._Instance.Settle();
+    }
 }

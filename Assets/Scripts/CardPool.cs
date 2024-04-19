@@ -48,4 +48,20 @@ public class CardPool : MonoBehaviour
             C.OnChosen();
         }
     }
+    public void AwardCards()
+    {
+        foreach (var card in _ChosenCards)
+        {
+            card.OnAward();
+        }
+    }
+    public void Settle()
+    {
+        float score = 0f;
+        foreach (var item in _ChosenCards)
+        {
+            score += item.OnSettle();
+        }
+        Debug.Log($"总分为{score}"); ;
+    }
 }
