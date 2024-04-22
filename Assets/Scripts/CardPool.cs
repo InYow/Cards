@@ -56,6 +56,14 @@ public class CardPool : MonoBehaviour
             card.OnTimeStart();
         }
     }
+    //单次结束
+    public void TimeEnd()
+    {
+        foreach (var card in _Cards)
+        {
+            card.OnTimeEnd();
+        }
+    }
     public void AwardCards()
     {
         foreach (var card in _ChosenCards)

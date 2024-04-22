@@ -9,6 +9,7 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI roundGUI;
     public TextMeshProUGUI levelGUI;
     public TextMeshProUGUI remainTimesGUI;
+    public TextMeshProUGUI remainChipsGUI;
     public TextMeshProUGUI scoreMustGUI;
     public TextMeshProUGUI scoreGUI;
     public TextMeshProUGUI goldGUI;
@@ -24,6 +25,7 @@ public class PlayerUI : MonoBehaviour
         SetRound(RoundManager._Instance.Round);
         SetLevel(RoundManager._Instance.Level);
         SetremainTimes(RoundManager._Instance.remainTimes);
+        SetremainChips(RoundManager._Instance.remainChips);
         SetscoreMust(RoundManager._Instance.score_Must);
         SetScore(RoundManager._Instance.score);
         SetGold(RoundManager._Instance.gold);
@@ -39,6 +41,10 @@ public class PlayerUI : MonoBehaviour
     public void SetremainTimes(int number)
     {
         remainTimesGUI.text = $"剩余次数 {number}";
+    }
+    public void SetremainChips(int number)
+    {
+        remainChipsGUI.text = $"筹码 {number}";
     }
     public void SetscoreMust(int number)
     {

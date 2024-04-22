@@ -1,11 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
+    public TextMeshProUGUI textGUI;
+    public Image image;
+    //-------以上百分百仅用于测试开发
     public CardData cardData;
     public CardBehaviour cardBehaviour;
     public CardScore cardScore;
@@ -63,6 +68,7 @@ public class Card : MonoBehaviour
             }
         }
         AddToPool();
+        ShowChipText();
     }
     [ContextMenu("加入牌池")]
     public void AddToPool()
@@ -91,6 +97,7 @@ public class Card : MonoBehaviour
     // 抽完时调用
     public void OnChosen()
     {
+        this.YesChoose();
         cardBehaviour.OnChosen(this);
     }
     // 获得队列中卡牌的效果
@@ -106,7 +113,7 @@ public class Card : MonoBehaviour
     // 回合结束
     public void OnTimeEnd()
     {
-
+        NoChoose();
     }
     // 添加元素到卡牌池
     public void OnAdd()
@@ -117,5 +124,60 @@ public class Card : MonoBehaviour
     public void OnRemove()
     {
 
+    }
+    [ContextMenu("选中了")]
+    public void YesChoose()
+    {
+        image.color = Color.red;
+    }
+    [ContextMenu("取消选中")]
+    public void NoChoose()
+    {
+        image.color = Color.white;
+    }
+    [ContextMenu("加注")]
+    public void AddChip(int chip)
+    {
+        if (RoundManager._Instance.remainChips == 0)
+        {
+            return;
+        }
+        else if (RoundManager._Instance.remainChips >= chip)
+        {
+            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + chip);
+            RoundManager._Instance.remainChips -= chip;
+        }
+        else
+        {
+            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.remainChips);
+            RoundManager._Instance.remainChips = 0;
+        }
+        PlayerUI._Instance.SetremainChips(RoundManager._Instance.remainChips);
+        ShowChipText();
+    }
+    [ContextMenu("减注")]
+    public void DetectChip(int chip)
+    {
+        if (this.cardScore.GetChip_Beton == 0)
+        {
+            return;
+        }
+        else if (this.cardScore.GetChip_Beton >= chip)
+        {
+            RoundManager._Instance.remainChips += chip;
+            cardScore.SetChip_BetOn(cardScore.GetChip_Beton - chip);
+        }
+        else
+        {
+            RoundManager._Instance.remainChips += cardScore.GetChip_Beton;
+            cardScore.SetChip_BetOn(0);
+        }
+        PlayerUI._Instance.SetremainChips(RoundManager._Instance.remainChips);
+        ShowChipText();
+    }
+    //展示该牌筹码
+    public void ShowChipText()
+    {
+        textGUI.text = $"基础筹码：{cardData.GetChip_Basis}\n追加筹码：{cardScore.GetChip_Beton}";
     }
 }
