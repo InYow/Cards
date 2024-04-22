@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   cardName: "\u82F9\u679C"
+  chip_Basis: 1
+  mult_Basis: 1
   description: "\u6BCF\u5929\u4E00\u82F9\u679C\uFF0C\u533B\u751F\u8FDC\u79BB\u6211\u3002"

@@ -48,6 +48,14 @@ public class CardPool : MonoBehaviour
             C.OnChosen();
         }
     }
+    //单次下注开始
+    public void TimeStart()
+    {
+        foreach (var card in _Cards)
+        {
+            card.OnTimeStart();
+        }
+    }
     public void AwardCards()
     {
         foreach (var card in _ChosenCards)
@@ -55,13 +63,13 @@ public class CardPool : MonoBehaviour
             card.OnAward();
         }
     }
-    public void Settle()
+    public float Settle()
     {
         float score = 0f;
         foreach (var item in _ChosenCards)
         {
             score += item.OnSettle();
         }
-        Debug.Log($"总分为{score}"); ;
+        return score;
     }
 }

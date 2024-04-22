@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Banana : CardBehaviour
@@ -12,7 +13,7 @@ public class Banana : CardBehaviour
         {
             if (item.cardData.id == 2)
             {
-                a += 2;
+                a += item.GetMult_Basis;
             }
         }
         foreach (var item in cards)
@@ -22,11 +23,12 @@ public class Banana : CardBehaviour
                 item.SetMult(a);
             }
         }
+        card.SetChip(card.GetChip_Basis + card.GetChip_Beton);
     }
     public override float OnSettle(Card card)
     {
-        float score = card.GetScore;
-        Debug.Log($"{name}的得分为{card.GetChip}（筹码） * {card.GetMult}（倍率） = {card.GetScore} .");
+        float score = card.GetMult * card.GetChip;
+        Debug.Log($"{name}的得分为{card.GetChip}（筹码） * {card.GetMult}（倍率） = {score} .");
         return score;
     }
 }
