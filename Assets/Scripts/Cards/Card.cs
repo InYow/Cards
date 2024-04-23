@@ -16,14 +16,14 @@ public class Card : MonoBehaviour
     public CardScore cardScore;
 
     //获取基础筹码
-    public int GetChip_Basis { get => cardData.GetChip_Basis; }
+    public int GetChip_Basis { get => cardScore.GetChip_Basis; }
     //设置基础筹码
-    public void SetChip_Basis(int value) => cardData.SetChip_Basis(value);
+    public void SetChip_Basis(int value) => cardScore.SetChip_Basis(value);
 
     //获取基础倍率
-    public float GetMult_Basis { get => cardData.GetMult_Basis; }
+    public float GetMult_Basis { get => cardScore.GetMult_Basis; }
     //设置基础倍率
-    public void SetMult_Basis(float value) => cardData.SetMult_Basis(value);
+    public void SetMult_Basis(float value) => cardScore.SetMult_Basis(value);
 
     //获取加注筹码
     public int GetChip_Beton { get => cardScore.GetChip_Beton; }
@@ -178,6 +178,6 @@ public class Card : MonoBehaviour
     //展示该牌筹码
     public void ShowChipText()
     {
-        textGUI.text = $"基础筹码：{cardData.GetChip_Basis}\n追加筹码：{cardScore.GetChip_Beton}";
+        textGUI.text = $"基础筹码：{cardScore.GetChip_Basis}\n追加筹码：{cardScore.GetChip_Beton}";
     }
 }

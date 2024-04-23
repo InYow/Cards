@@ -24,4 +24,13 @@ public class CardScore : MonoBehaviour
     [Tooltip("不要依赖于手动修改此处的数值,可能会引起意想不到的错误")]
     public float mult;
     public float GetMult { get => mult; }
+    //基础筹码
+    public int chip_Basis;
+    public int GetChip_Basis { get => chip_Basis; }
+    public void SetChip_Basis(int value) { chip_Basis = value; }
+    //基础倍率
+    public float mult_Basis;
+    public float GetMult_Basis { get => mult_Basis; }
+    public void SetMult_Basis(float value) { mult_Basis = value; }
+
 }
