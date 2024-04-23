@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 144032701}
   - component: {fileID: 144032700}
   - component: {fileID: 144032699}
-  - component: {fileID: 144032698}
+  - component: {fileID: 144032703}
   m_Layer: 5
   m_Name: "\u5361\u724C (1)"
   m_TagString: Untagged
@@ -423,18 +423,6 @@ RectTransform:
   m_AnchoredPosition: {x: -183.91446, y: -1081.1644}
   m_SizeDelta: {x: 233.67108, y: 233.67108}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &144032698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144032696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0813c28be3b0c694c86892ffcc199f62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &144032699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,9 +452,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textGUI: {fileID: 1362256066}
   image: {fileID: 144032701}
-  cardData: {fileID: 11400000, guid: 193581629f3b73e49ae13473bbd3f018, type: 2}
-  cardBehaviour: {fileID: 144032698}
-  cardScore: {fileID: 144032699}
+  cardData: {fileID: 11400000, guid: 2e80917ae589f7d42a25d4232f6e0ff3, type: 2}
+  cardBehaviour: {fileID: 144032703}
+  cardScore: {fileID: 0}
 --- !u!114 &144032701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +493,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144032696}
   m_CullTransparentMesh: 1
+--- !u!114 &144032703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144032696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5e9a7bee5fbb34ea98b7ca80973f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &158783765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,7 +2536,7 @@ GameObject:
   - component: {fileID: 1111699406}
   - component: {fileID: 1111699405}
   - component: {fileID: 1111699404}
-  - component: {fileID: 1111699403}
+  - component: {fileID: 1111699408}
   m_Layer: 5
   m_Name: "\u5361\u724C (2)"
   m_TagString: Untagged
@@ -2567,18 +2567,6 @@ RectTransform:
   m_AnchoredPosition: {x: 109.7, y: -1081.1644}
   m_SizeDelta: {x: 233.67108, y: 233.67108}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1111699403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111699401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cff7652c5c27ec4098ff347880d060b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1111699404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2608,9 +2596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textGUI: {fileID: 2040369463}
   image: {fileID: 1111699406}
-  cardData: {fileID: 11400000, guid: c2331305bee936b46bfff5eb6b3de1e9, type: 2}
-  cardBehaviour: {fileID: 1111699403}
-  cardScore: {fileID: 1111699404}
+  cardData: {fileID: 11400000, guid: 1f7f7cd762f41ea4cb69a5e6aa12645a, type: 2}
+  cardBehaviour: {fileID: 1111699408}
+  cardScore: {fileID: 0}
 --- !u!114 &1111699406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,6 +2637,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111699401}
   m_CullTransparentMesh: 1
+--- !u!114 &1111699408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111699401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda0069d507f5bf43ae4b039e56f6d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1204551235
 GameObject:
   m_ObjectHideFlags: 0
@@ -3985,7 +3985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textGUI: {fileID: 1399027216}
   image: {fileID: 1949004972}
-  cardData: {fileID: 11400000, guid: 193581629f3b73e49ae13473bbd3f018, type: 2}
+  cardData: {fileID: 11400000, guid: cd2b323135aa46146aebd8f3f28e5314, type: 2}
   cardBehaviour: {fileID: 1949004977}
   cardScore: {fileID: 1949004975}
 --- !u!114 &1949004977
@@ -3997,7 +3997,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949004970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0813c28be3b0c694c86892ffcc199f62, type: 3}
+  m_Script: {fileID: 11500000, guid: 1500bab622bcdfb409e60fe4c978756c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1959403509

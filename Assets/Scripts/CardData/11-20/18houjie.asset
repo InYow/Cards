@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b7ab0596fa496e4c897ad749e195dcd, type: 3}
-  m_Name: Apple
+  m_Name: 18houjie
   m_EditorClassIdentifier: 
-  id: 1
-  cardName: "\u82F9\u679C"
+  id: 18
+  cardName: huojie
   chip_Basis: 1
   mult_Basis: 1
-  description: "\u6BCF\u5929\u4E00\u82F9\u679C\uFF0C\u533B\u751F\u8FDC\u79BB\u6211\u3002"
+  description: 
