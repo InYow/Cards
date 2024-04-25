@@ -10,11 +10,11 @@ public class Card : MonoBehaviour
 {
     public TextMeshProUGUI textGUI;
     public Image image;
+    public int cardID;//卡牌的编号
     //-------以上百分百仅用于测试开发
     public CardData cardData;
     public CardBehaviour cardBehaviour;
     public CardScore cardScore;
-
     //获取基础筹码
     public int GetChip_Basis { get => cardScore.GetChip_Basis; }
     //设置基础筹码
