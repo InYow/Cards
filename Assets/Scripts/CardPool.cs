@@ -17,38 +17,15 @@ public class CardPool : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    [ContextMenu("按卡牌的cardID排序")]
-    //按卡牌的cardID排序
-    public void SortCards()
-    {
-        _Cards.Sort((x, y) => x.cardID.CompareTo(y.cardID));
-    }
     //删除元素
     public void RemoveCard(Card card)
     {
         _Cards.Remove(card);
     }
-    //按cardID有序插入元素
+    //添加元素
     public void AddCard(Card card)
     {
-        int index = -1;
-        foreach (var item in _Cards)
-        {
-            if (item.cardID > card.cardID)
-            {
-                index = _Cards.IndexOf(item);
-                break;
-            }
-        }
-        Debug.Log(index);
-        if (index < 0)
-        {
-            _Cards.Add(card);
-        }
-        else
-        {
-            _Cards.Insert(index, card);
-        }
+        _Cards.Add(card);
     }
     //抽牌
     public void ChosenCard(int number)
