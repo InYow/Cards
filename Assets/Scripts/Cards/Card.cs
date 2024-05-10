@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour
+public class Card : MonoBehaviour, IPointerDownHandler
 {
     public TextMeshProUGUI textGUI;
     public Image image;
@@ -67,9 +69,16 @@ public class Card : MonoBehaviour
                 cardScore = GetComponent<CardScore>();
             }
         }
+        Init();
         AddToPool();
         ShowChipText();
     }
+    private void Init()
+    {
+        cardScore.chip_Basis = cardData.Chip_Basis;
+        cardScore.mult_Basis = cardData.Mult_Basis;
+    }
+
     [ContextMenu("加入牌池")]
     public void AddToPool()
     {
@@ -175,9 +184,14 @@ public class Card : MonoBehaviour
         PlayerUI._Instance.SetremainChips(RoundManager._Instance.remainChips);
         ShowChipText();
     }
-    //展示该牌筹码
+    //展示该牌筹码和倍率
     public void ShowChipText()
     {
         textGUI.text = $"基础筹码：{cardScore.GetChip_Basis}\n追加筹码：{cardScore.GetChip_Beton}";
+    }
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+    {
+        Debug.Log(gameObject.name);
+        InfoChecker.infoChecker.CreateInfoIpt(new ItemInfo(cardData));
     }
 }

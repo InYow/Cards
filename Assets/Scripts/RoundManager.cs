@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    //public delegate void Function();
     public static RoundManager _Instance;
     [Header("回合、轮注")]
     public int Round;//当前回合数
@@ -82,14 +81,4 @@ public class RoundManager : MonoBehaviour
     {
         Debug.Log($"总得分{score}没达到要求得分{score_Must},你输了...");
     }
-    // public void InvokeWaitTime(Function function, float time)
-    // {
-    //     IEnumerator ie = IEInvokeWaitTime(function, time);
-    //     StartCoroutine(ie);
-    // }
-    // public IEnumerator IEInvokeWaitTime(Function function, float time)
-    // {
-    //     yield return new WaitForSecondsRealtime(time);
-    //     function();
-    // }
 }
