@@ -9,7 +9,6 @@ public class RoundManager : MonoBehaviour
     public int Round;//当前回合数
     public int Level;//当前轮注数
     [Header("剩余筹码、次数和单次的抽取数量")]
-    public int remainChips;//剩余的筹码
     public int remainTimes;//剩余的次数
     public int chooseNumber;//抽取的数量
     [Header("分数")]

@@ -25,7 +25,7 @@ public class PlayerUI : MonoBehaviour
         SetRound(RoundManager._Instance.Round);
         SetLevel(RoundManager._Instance.Level);
         SetremainTimes(RoundManager._Instance.remainTimes);
-        SetremainChips(RoundManager._Instance.remainChips);
+        SetremainChips(RoundManager._Instance.gold);
         SetscoreMust(RoundManager._Instance.score_Must);
         SetScore(RoundManager._Instance.score);
         SetGold(RoundManager._Instance.gold);
@@ -44,7 +44,7 @@ public class PlayerUI : MonoBehaviour
     }
     public void SetremainChips(int number)
     {
-        remainChipsGUI.text = $"筹码 {number}";
+        remainChipsGUI.text = $"金币 {number}";
     }
     public void SetscoreMust(int number)
     {

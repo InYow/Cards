@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardPool : MonoBehaviour
 {
     public static CardPool _Instance;
+    public List<Hole> _Holes = new();
     // 卡牌池中的
     public List<Card> _Cards = new();
     // 被选择的卡牌们
@@ -25,7 +27,16 @@ public class CardPool : MonoBehaviour
     //添加元素
     public void AddCard(Card card)
     {
+        foreach (var item in _Holes)
+        {
+            if(item.card==null)
+            {
+                item.card = card;
+                break;
+            }
+        }
         _Cards.Add(card);
+
     }
     //抽牌
     public void ChosenCard(int number)
@@ -42,10 +53,16 @@ public class CardPool : MonoBehaviour
             cards.Add(_Cards[index]);
         }
         _ChosenCards = cards;
-        foreach (var C in _ChosenCards)
+        for (int i = 0; i < _ChosenCards.Count; i++)
         {
             //被选中的调用
-            C.OnChosen();
+            _ChosenCards[i].OnChosen();
+        }
+        List<Card> UnChoseCards = _Cards.Except(_ChosenCards).ToList();
+        for (int i = 0; i < UnChoseCards.Count; i++)
+        {
+            //未被选中的调用
+            UnChoseCards[i].OnUnChosen();
         }
     }
     //单次下注开始
@@ -79,5 +96,17 @@ public class CardPool : MonoBehaviour
             score += item.OnSettle();
         }
         return score;
+    }
+
+    public Hole GetEmptyHole()
+    {
+        foreach (var item in _Holes)
+        {
+            if(item.card==null)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 }

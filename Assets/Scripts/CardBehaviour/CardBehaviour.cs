@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+[Serializable]
 public abstract class CardBehaviour : MonoBehaviour
 {
     //该次下注开始时调用 --- 相当于Start() 执行卡牌的初始化
@@ -38,5 +39,10 @@ public abstract class CardBehaviour : MonoBehaviour
     public virtual void OnRemove(Card card)
     {
 
+    }
+
+    public virtual void OnUnChosen(Card card)
+    {
+        
     }
 }
