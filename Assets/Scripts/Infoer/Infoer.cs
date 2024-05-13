@@ -13,7 +13,7 @@ public class Infoer : MonoBehaviour
     public TextMeshProUGUI jokeGUI;
     private void Awake()
     {
-        if(infoer==null)
+        if (infoer == null)
         {
             infoer = this;
         }
@@ -27,5 +27,6 @@ public class Infoer : MonoBehaviour
         nameGUI.text = card.cardName;
         descripGUI.text = card.effect;
         jokeGUI.text = card.description;
+        image.sprite = card.sprite_color;
     }
 }

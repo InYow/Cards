@@ -16,6 +16,8 @@ public class RoundManager : MonoBehaviour
     public int score;//当前得分
     [Header("金币")]
     public int gold;//金币
+    [Header("商店")]
+    public GameObject shop;//商店
     public delegate void boss();
     private void Awake()
     {
@@ -53,6 +55,7 @@ public class RoundManager : MonoBehaviour
     {
         score += (int)CardPool._Instance.Settle();
         PlayerUI._Instance.SetScore(score);
+        Instantiate(shop);
         Invoke("TimeEnd", 0.5f);
     }
     [ContextMenu("该次结束")]
@@ -61,6 +64,8 @@ public class RoundManager : MonoBehaviour
         if (remainTimes == 0)
             DetectWorF();
         CardPool._Instance.TimeEnd();
+
+        Debug.Log("该次结束");
     }
     public void DetectWorF()
     {

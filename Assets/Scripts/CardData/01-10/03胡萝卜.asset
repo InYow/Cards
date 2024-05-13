@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 3
   cardName: "\u80E1\u841D\u535C"
   sprite: {fileID: 21300000, guid: c239176bd5b1859449a8dc357780a03d, type: 3}
+  sprite_color: {fileID: 21300000, guid: b64d216fa850d8847a24b3d7268a2929, type: 3}
   Chip_Basis: 3
   Mult_Basis: 1
   effect: "\u597D\u597D\u597D"
