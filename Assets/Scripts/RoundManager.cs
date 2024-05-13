@@ -16,6 +16,7 @@ public class RoundManager : MonoBehaviour
     public int score;//当前得分
     [Header("金币")]
     public int gold;//金币
+    public delegate void boss();
     private void Awake()
     {
         if (_Instance == null)
@@ -80,4 +81,6 @@ public class RoundManager : MonoBehaviour
     {
         Debug.Log($"总得分{score}没达到要求得分{score_Must},你输了...");
     }
+
+    //boss boss1 = new boss(Settle());
 }

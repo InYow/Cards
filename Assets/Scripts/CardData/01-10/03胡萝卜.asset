@@ -17,5 +17,5 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: c239176bd5b1859449a8dc357780a03d, type: 3}
   Chip_Basis: 3
   Mult_Basis: 1
-  effect: 
+  effect: "\u597D\u597D\u597D"
   description: "\u7269\u54C1"
