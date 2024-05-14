@@ -15,7 +15,9 @@ MonoBehaviour:
   id: 1
   cardName: "\u82F9\u679C"
   sprite: {fileID: 21300000, guid: 83ddc87ac0c57c9459c5c5b6d59860e8, type: 3}
+  sprite_color: {fileID: 21300000, guid: 7b1a25bf462b013458d77e0d084ff94b, type: 3}
   Chip_Basis: 3
   Mult_Basis: 1
+  sort: "\u7269\u54C1"
   effect: "\u83B7\u5F97\u5206\u6570"
   description: "\u8FD9\u662F\u82F9\u679C\u3002"

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   cardName: "\u6708\u4EAE"
-  sprite: {fileID: 21300000, guid: 71cd631d6d7cbd44e82c47931116bbd0, type: 3}
-  sprite_color: {fileID: 21300000, guid: 891e0e1db2163d646a0543e84365d2e1, type: 3}
+  sprite: {fileID: -361623952, guid: a5ec3cb7149edf04cbb2de6098f493b0, type: 3}
+  sprite_color: {fileID: -369449961, guid: c7d3ebac8ca58894b8a32c7d0be34676, type: 3}
   Chip_Basis: 1
   Mult_Basis: 1
-  effect: "\u4E0D\u4E0D\u4E0D"
-  description: "\u7269\u54C1"
+  sort: "\u7269\u54C1"
+  effect: "\u83B7\u5F97\u5206\u6570"
+  description: "\u8FD9\u662F\u6708\u4EAE"

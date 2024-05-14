@@ -13,6 +13,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public TextMeshProUGUI textGUI;
     [HideInInspector]
     public Image image;
+    public GameObject infoObj;//信息面板
     //-------以上百分百仅用于测试开发
     public CardData cardData;
     public CardBehaviour cardBehaviour;
@@ -139,6 +140,8 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         Init();
         AddToPool();
         ShowChipText();
+        //加载信息面板
+        infoObj = Resources.Load<GameObject>("得分信息");
     }
     private void Init()
     {
@@ -185,7 +188,11 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     // 结算这次获得的分数
     public float OnSettle()
     {
-        return cardBehaviour.OnSettle(this);
+        float score = cardBehaviour.OnSettle(this);
+        GameObject infogameObject = Instantiate(infoObj, transform);
+        TextMeshProUGUI textMeshProUGUI = infogameObject.GetComponent<TextMeshProUGUI>();
+        textMeshProUGUI.text = $"得分{score}";
+        return score;
     }
     // 回合结束
     public void OnTimeEnd()
@@ -255,7 +262,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     //展示该牌筹码和倍率
     public void ShowChipText()
     {
-        textGUI.text = $"基础筹码：{cardScore.GetChip_Basis}\n追加筹码：{cardScore.GetChip_Beton}";
+        Infoer.infoer.chipGUI.text = $"(<#64c0c0>{cardScore.GetChip_Basis}</color>+<#ff6600>{cardScore.GetChip_Beton}</color>)筹码 \n(<#64c0c0>{cardScore.GetMult_Basis}</color>)倍率";
     }
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {

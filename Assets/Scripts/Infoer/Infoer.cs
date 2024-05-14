@@ -9,6 +9,7 @@ public class Infoer : MonoBehaviour
     public static Infoer infoer;
     public Image image;
     public TextMeshProUGUI nameGUI;
+    public TextMeshProUGUI chipGUI;
     public TextMeshProUGUI descripGUI;
     public TextMeshProUGUI jokeGUI;
     private void Awake()

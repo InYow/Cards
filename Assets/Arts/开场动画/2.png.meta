@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 52f6f7d7565266441a852d0ec5f985be
+guid: 5bf7b2d489648e24b953a106af851cd0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_0
+      name: 2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,20 +113,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 267a6a43002f01f4991ec8233dda0145
-      internalID: 1889300860
+      spriteID: 570edfd7a946c454e90e3357caa5a4d6
+      internalID: 543879185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_1
+      name: 2_1
       rect:
         serializedVersion: 2
         x: 512
@@ -134,20 +134,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0bebbe95940d384da9b9172a7ff24fe
-      internalID: -17408887
+      spriteID: 32104d49930dee942b1239557178a7bb
+      internalID: -729046829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_2
+      name: 2_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -155,20 +155,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05cd7876833cbe74ebd2850fedc823aa
-      internalID: 206083808
+      spriteID: cb1f1f3354e21b446b5a7926c6cdda06
+      internalID: 1842917579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_3
+      name: 2_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -176,20 +176,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 469af9abcbbba914ab53475d0ac0c43c
-      internalID: 6829866
+      spriteID: 38636b51707ec5549a0aef25992ce3bb
+      internalID: 937101932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_4
+      name: 2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -197,20 +197,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cdfc8c01207b6d42b8a1f1e30384ec8
-      internalID: 1901223869
+      spriteID: 94fbccc5759585041a6602b693128642
+      internalID: -1039857114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_5
+      name: 2_5
       rect:
         serializedVersion: 2
         x: 512
@@ -218,20 +218,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f712d358d7068841b73586bb9633f92
-      internalID: -527336363
+      spriteID: b0331b8d19cc22a47a64059d8d31e127
+      internalID: 1549266805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_6
+      name: 2_6
       rect:
         serializedVersion: 2
         x: 1024
@@ -239,20 +239,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01bb153431494e5499be9f1cb36d4d71
-      internalID: 247921117
+      spriteID: 7ab8870bfbd493145ac950f5a275428d
+      internalID: -92901833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_7
+      name: 2_7
       rect:
         serializedVersion: 2
         x: 1536
@@ -260,20 +260,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bfe89a22f04d45458ecd6a3c977b372
-      internalID: 1356638310
+      spriteID: 11e4afa3c40da7c4496e3cfc9aadf4ef
+      internalID: -984573668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_8
+      name: 2_8
       rect:
         serializedVersion: 2
         x: 0
@@ -281,20 +281,20 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0560760c58a9bc642b84c0d818ec0c90
-      internalID: -1174347450
+      spriteID: bc1eec3fd7ae69a45955697bbac54565
+      internalID: -1745935816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: scene2-ezgif.com-gif-to-sprite-converter_9
+      name: 2_9
       rect:
         serializedVersion: 2
         x: 512
@@ -302,14 +302,14 @@ TextureImporter:
         width: 512
         height: 288
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a56c6ac59ffab3b41b2f10391ea7410b
-      internalID: -733473753
+      spriteID: 47958a531365f86469c8f7712ea696bf
+      internalID: -2036704647
       vertices: []
       indices: 
       edges: []
@@ -325,16 +325,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      scene2-ezgif.com-gif-to-sprite-converter_0: 1889300860
-      scene2-ezgif.com-gif-to-sprite-converter_1: -17408887
-      scene2-ezgif.com-gif-to-sprite-converter_2: 206083808
-      scene2-ezgif.com-gif-to-sprite-converter_3: 6829866
-      scene2-ezgif.com-gif-to-sprite-converter_4: 1901223869
-      scene2-ezgif.com-gif-to-sprite-converter_5: -527336363
-      scene2-ezgif.com-gif-to-sprite-converter_6: 247921117
-      scene2-ezgif.com-gif-to-sprite-converter_7: 1356638310
-      scene2-ezgif.com-gif-to-sprite-converter_8: -1174347450
-      scene2-ezgif.com-gif-to-sprite-converter_9: -733473753
+      2_0: 543879185
+      2_1: -729046829
+      2_2: 1842917579
+      2_3: 937101932
+      2_4: -1039857114
+      2_5: 1549266805
+      2_6: -92901833
+      2_7: -984573668
+      2_8: -1745935816
+      2_9: -2036704647
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

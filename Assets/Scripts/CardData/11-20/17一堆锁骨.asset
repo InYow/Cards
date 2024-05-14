@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7ab0596fa496e4c897ad749e195dcd, type: 3}
+  m_Name: "17\u4E00\u5806\u9501\u9AA8"
+  m_EditorClassIdentifier: 
+  id: 17
+  cardName: "\u4E00\u5806\u9501\u9AA8"
+  sprite: {fileID: 21300000, guid: cef539a1e22504542bd38c6a1936b046, type: 3}
+  sprite_color: {fileID: 21300000, guid: 29f5ea41863a35d4e9a1bce199aba024, type: 3}
+  Chip_Basis: 1
+  Mult_Basis: 1
+  sort: "\u9AA8\u5934"
+  effect: "\u88AB\u62BD\u4E2D\u65F6\uFF0C\u573A\u4E0A\u6240\u6709\u795E\u7B26\u7684\u7B79\u7801\u6C38\u4E45\u6027+1\r\n"
+  description: 
