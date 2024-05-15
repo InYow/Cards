@@ -18,6 +18,8 @@ public class RoundManager : MonoBehaviour
     public int gold;//金币
     [Header("商店")]
     public GameObject shop;//商店
+    [Header("抽取中")]
+    public bool isUsing;
     public delegate void boss();
     private void Awake()
     {
@@ -25,11 +27,17 @@ public class RoundManager : MonoBehaviour
             _Instance = this;
         else
             Destroy(gameObject);
+
+        isUsing = false;
     }
     [ContextMenu("该次开始")]
     public void TimeStart()
     {
+        if (isUsing)
+            return;
+        isUsing = true;
         CardPool._Instance.TimeStart();
+        Invoke("Choose", 0.2f);
     }
     [ContextMenu("抽元素")]
     public void Choose()
@@ -55,16 +63,29 @@ public class RoundManager : MonoBehaviour
     {
         score += (int)CardPool._Instance.Settle();
         PlayerUI._Instance.SetScore(score);
-        Instantiate(shop);
         Invoke("TimeEnd", 0.5f);
     }
     [ContextMenu("该次结束")]
     public void TimeEnd()
     {
         if (remainTimes == 0)
+        {
+            //本次轮注的结束
             DetectWorF();
+            //轮注加一,补充剩余次数
+            Instantiate(shop);  //打开商店
+            Level++;
+            remainTimes = 3;
+            if (Level == 4)
+            {
+                //本次回合的结束
+                //回合进一，轮注回归一
+                Level = 1;
+                Round++;
+            }
+        }
         CardPool._Instance.TimeEnd();
-
+        isUsing = false;
         Debug.Log("该次结束");
     }
     public void DetectWorF()

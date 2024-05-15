@@ -70,8 +70,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 6.0 x 2.0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ae33fc303805f484db4903b7b2aff259, type: 2}
+  m_sharedMaterial: {fileID: -5461546903561544413, guid: ae33fc303805f484db4903b7b2aff259, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -146,7 +146,7 @@ Animation:
   m_GameObject: {fileID: 4081821116101150240}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 16bcdc3fd604c19439ecf68d93de289c, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 16bcdc3fd604c19439ecf68d93de289c, type: 2}
   m_WrapMode: 0

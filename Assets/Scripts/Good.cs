@@ -42,7 +42,7 @@ public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         Shop_Finger._Instance.SetTatget(this.gameObject);
         //信息面板
-        Infoer.infoer.SetText(card.GetComponent<Card>().cardData);
+        Infoer.infoer.SetText(card.GetComponent<Card>());
         Infoer.infoer.transform.position = transform.position;
         Infoer.infoer.gameObject.SetActive(true);
     }

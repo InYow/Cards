@@ -30,6 +30,16 @@ public class PlayerUI : MonoBehaviour
         SetScore(RoundManager._Instance.score);
         SetGold(RoundManager._Instance.gold);
     }
+    private void Update()
+    {
+        SetRound(RoundManager._Instance.Round);
+        SetLevel(RoundManager._Instance.Level);
+        SetremainTimes(RoundManager._Instance.remainTimes);
+        SetremainChips(RoundManager._Instance.gold);
+        SetscoreMust(RoundManager._Instance.score_Must);
+        SetScore(RoundManager._Instance.score);
+        SetGold(RoundManager._Instance.gold);
+    }
     public void SetRound(int number)
     {
         roundGUI.text = $"回合 {number}";

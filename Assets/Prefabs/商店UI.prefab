@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 822025963104423287}
   - component: {fileID: 822025963104423284}
   m_Layer: 5
-  m_Name: Card1 (2)
+  m_Name: good3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 822025963547565475}
   - component: {fileID: 822025963547565472}
   m_Layer: 5
-  m_Name: Card1 (1)
+  m_Name: good2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,6 +356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52462ac7993d08f4e8950675cb6f0a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goods:
+  - {fileID: 822025964608655262}
+  - {fileID: 822025963547565472}
+  - {fileID: 822025963104423284}
 --- !u!1 &822025964499761962
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +449,7 @@ GameObject:
   - component: {fileID: 822025964608655260}
   - component: {fileID: 822025964608655262}
   m_Layer: 5
-  m_Name: Card1
+  m_Name: good1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

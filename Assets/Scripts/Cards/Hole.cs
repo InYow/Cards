@@ -12,6 +12,7 @@ public class Hole : MonoBehaviour
         if (card != null)
         {
             card.gameObject.transform.SetParent(transform);
+            //card.gameObject.GetComponent<RectTransform>()
             card.gameObject.transform.position = this.transform.position;
         }
     }

@@ -23,11 +23,20 @@ public class Infoer : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void SetText(CardData card)
+    public void SetText(Card card)
     {
-        nameGUI.text = card.cardName;
-        descripGUI.text = card.effect;
-        jokeGUI.text = card.description;
-        image.sprite = card.sprite_color;
+        nameGUI.text = card.cardData.cardName;//Ãû×Ö
+        CardScore cardScore = card.cardScore;
+        if (cardScore == null)
+        {
+            chipGUI.text = $"(<#64c0c0>{card.cardData.Chip_Basis}</color>)³ïÂë \n(<#64c0c0>{card.cardData.Mult_Basis}</color>)±¶ÂÊ";
+        }
+        else
+        {
+            chipGUI.text = $"(<#64c0c0>{cardScore.GetChip_Basis}</color>+<#ff6600>{cardScore.GetChip_Beton}</color>)³ïÂë \n(<#64c0c0>{cardScore.GetMult_Basis}</color>)±¶ÂÊ";//³ïÂë±¶ÂÊ
+        }
+        descripGUI.text = card.cardData.effect;//Ð§¹û
+        jokeGUI.text = card.cardData.description;//ÃèÊö
+        image.sprite = card.cardData.sprite_color;//Í¼Æ¬
     }
 }

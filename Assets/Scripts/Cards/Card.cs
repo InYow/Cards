@@ -139,7 +139,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         image = GetComponent<Image>();
         Init();
         AddToPool();
-        ShowChipText();
+        //ShowChipText();
         //加载信息面板
         infoObj = Resources.Load<GameObject>("得分信息");
     }
@@ -237,7 +237,8 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             RoundManager._Instance.gold = 0;
         }
         PlayerUI._Instance.SetremainChips(RoundManager._Instance.gold);
-        ShowChipText();
+        Infoer.infoer.SetText(this);
+        //ShowChipText();
     }
     [ContextMenu("减注")]
     public void DetectChip(int chip)
@@ -257,7 +258,8 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             cardScore.SetChip_BetOn(0);
         }
         PlayerUI._Instance.SetremainChips(RoundManager._Instance.gold);
-        ShowChipText();
+        Infoer.infoer.SetText(this);
+        //ShowChipText();
     }
     //展示该牌筹码和倍率
     public void ShowChipText()
@@ -286,9 +288,10 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        Infoer.infoer.SetText(cardData);
+        Infoer.infoer.SetText(this);
         Infoer.infoer.transform.position = transform.position;
         Infoer.infoer.gameObject.SetActive(true);
+        //ShowChipText();
     }
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
