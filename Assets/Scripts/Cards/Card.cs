@@ -28,9 +28,9 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     }
     public class NearCards
     {
-       public Card left;
-       public Card right;
-        public NearCards(Card left,Card right)
+        public Card left;
+        public Card right;
+        public NearCards(Card left, Card right)
         {
             this.left = left;
             this.right = right;
@@ -43,15 +43,16 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         //left
         Card left;
         int leftIndex = index;
-/*        do
-        {
-            leftIndex--;
-            if (index < 0)
-            {
-                index += aholes.Count;
-            }
-        } while (aholes[leftIndex].card == null);
-*/        leftIndex--;
+        /*        do
+                {
+                    leftIndex--;
+                    if (index < 0)
+                    {
+                        index += aholes.Count;
+                    }
+                } while (aholes[leftIndex].card == null);
+        */
+        leftIndex--;
         if (index < 0)
         {
             index += aholes.Count;
@@ -60,15 +61,16 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         //right
         Card right;
         int rightIndex = index;
-/*        do
-        {
-            rightIndex++;
-            if (index >= aholes.Count)
-            {
-                rightIndex -= aholes.Count;
-            }
-        } while (aholes[rightIndex].card == null);
-*/        rightIndex++;
+        /*        do
+                {
+                    rightIndex++;
+                    if (index >= aholes.Count)
+                    {
+                        rightIndex -= aholes.Count;
+                    }
+                } while (aholes[rightIndex].card == null);
+        */
+        rightIndex++;
         if (index >= aholes.Count)
         {
             rightIndex -= aholes.Count;
@@ -272,11 +274,11 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
             AddChip(1);
         }
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             DetectChip(1);
         }
-        Debug.Log(gameObject.name);
+        //        Debug.Log(gameObject.name);
         //InfoChecker.infoChecker.CreateInfoIpt(new ItemInfo(cardData));
     }
     public void CardDestroy()

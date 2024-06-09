@@ -7,12 +7,25 @@ using UnityEngine.UI;
 public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public float speed;
-    public GameObject card;
+    private GameObject card;
+    public GameObject Card
+    {
+        get
+        {
+            return card;
+        }
+        set
+        {
+            card = value;
+            image = GetComponent<Image>();
+            image.sprite = Card.GetComponent<Card>().cardData.sprite;
+        }
+    }
     public Image image;
     private void Start()
     {
         image = GetComponent<Image>();
-        image.sprite = card.GetComponent<Card>().cardData.sprite;
+        image.sprite = Card.GetComponent<Card>().cardData.sprite;
     }
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
@@ -34,7 +47,7 @@ public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             transform.position = transform.position + (Vector3)(Pos - (Vector2)transform.position).normalized * speed * Time.deltaTime;
             yield return null;
         }
-        Instantiate(card, hole.gameObject.transform);
+        Instantiate(Card, hole.gameObject.transform);
         Destroy(Shop._Instance.gameObject);
         //Destroy(gameObject);
     }
@@ -42,7 +55,7 @@ public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         Shop_Finger._Instance.SetTatget(this.gameObject);
         //信息面板
-        Infoer.infoer.SetText(card.GetComponent<Card>());
+        Infoer.infoer.SetText(Card.GetComponent<Card>());
         Infoer.infoer.transform.position = transform.position;
         Infoer.infoer.gameObject.SetActive(true);
     }
