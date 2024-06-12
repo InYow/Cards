@@ -19,6 +19,9 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public CardBehaviour cardBehaviour;
     [HideInInspector]
     public CardScore cardScore;
+    private boss boss;
+
+
     public Hole GetHole { get => GetComponentsInParent<Hole>()[0]; }
     //
     public int GetHoleIndex()
@@ -121,6 +124,8 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     }
     private void Start()
     {
+        GameObject BOSSGO = GameObject.Find("boss");
+        boss = BOSSGO.GetComponent<boss>();
         if (cardData == null)
             Debug.Log($"{gameObject.name}没有绑定 CardData");
         if (cardBehaviour == null)
@@ -180,21 +185,78 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public void OnChosen()
     {
         this.YesChoose();
+        if(boss.number == 1 && cardData.sort == "物品")
+        {
+
+        }
+        else if(boss.number == 2 && cardData.sort=="器官")
+        {
+
+        }
+        else if (boss.number == 3 && cardData.sort == "骨头")
+        {
+
+        }
+        else if(cardScore.abandon==true)
+        {
+
+        }
+        else
+        {
         cardBehaviour.OnChosen(this);
+        }
     }
     // 获得队列中卡牌的效果
     public void OnAward()
     {
-        cardBehaviour.OnAward(this);
+        if (boss.number == 1 && cardData.sort == "物品")
+        {
+
+        }
+        else if (boss.number == 2 && cardData.sort == "器官")
+        {
+
+        }
+        else if (boss.number == 3 && cardData.sort == "骨头")
+        {
+
+        }
+        else if (cardScore.abandon == true)
+        {
+
+        }
+        else
+        {
+            cardBehaviour.OnAward(this);
+        }
     }
     // 结算这次获得的分数
     public float OnSettle()
     {
-        float score = cardBehaviour.OnSettle(this);
-        GameObject infogameObject = Instantiate(infoObj, transform);
-        TextMeshProUGUI textMeshProUGUI = infogameObject.GetComponent<TextMeshProUGUI>();
-        textMeshProUGUI.text = $"得分{score}";
-        return score;
+        if (boss.number == 1 && cardData.sort == "物品")
+        {
+            return 0f;
+        }
+        else if (boss.number == 2 && cardData.sort == "器官")
+        {
+            return 0f;
+        }
+        else if (cardScore.abandon == true)
+        {
+            return 0f;
+        }
+        else if (boss.number == 3 && cardData.sort == "骨头")
+        {
+            return 0f;
+        }
+        else
+        {
+            float score = cardBehaviour.OnSettle(this);
+            GameObject infogameObject = Instantiate(infoObj, transform);
+            TextMeshProUGUI textMeshProUGUI = infogameObject.GetComponent<TextMeshProUGUI>();
+            textMeshProUGUI.text = $"得分{score}";
+            return score;
+        }
     }
     // 回合结束
     public void OnTimeEnd()
@@ -298,5 +360,18 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
         Infoer.infoer.gameObject.SetActive(false);
+    }
+    public void Abandon(bool b)
+    {
+        cardScore.abandon = b;
+        if(b==true)
+        {
+            Color color = new(0.5f, 0.5f, 0.5f, 0.6f);
+            image.color = color;
+        }
+        else
+        {
+            image.color = Color.white;
+        }
     }
 }

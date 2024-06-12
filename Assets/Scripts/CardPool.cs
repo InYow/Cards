@@ -6,6 +6,7 @@ using UnityEngine;
 public class CardPool : MonoBehaviour
 {
     public static CardPool _Instance;
+    private boss boss;
     public List<Hole> _Holes = new();
     // 卡牌池中的
     public List<Card> _Cards = new();
@@ -76,6 +77,23 @@ public class CardPool : MonoBehaviour
     //单次结束
     public void TimeEnd()
     {
+        if(boss==null)
+        {
+            Debug.Log("boss?");
+        }
+        if (boss.number == 5)
+        {
+            if (_Cards != null && _Cards.Count != 0)
+                foreach (var c in _Cards)
+                {
+                    c.Abandon(false);
+                }
+            if (_ChosenCards != null && _ChosenCards.Count != 0)
+                foreach (var c in _ChosenCards)
+                {
+                    c.Abandon(true);
+                }
+        }
         foreach (var card in _Cards)
         {
             card.OnTimeEnd();
@@ -108,5 +126,10 @@ public class CardPool : MonoBehaviour
             }
         }
         return null;
+    }
+    private void Start()
+    {
+        GameObject BOSSGO = GameObject.Find("boss");
+        boss = BOSSGO.GetComponent<boss>();
     }
 }

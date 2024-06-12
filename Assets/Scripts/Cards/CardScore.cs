@@ -32,5 +32,6 @@ public class CardScore : MonoBehaviour
     public float mult_Basis;
     public float GetMult_Basis { get => mult_Basis; }
     public void SetMult_Basis(float value) { mult_Basis = value; }
-
+    [Header("失效")]
+    public bool abandon = false;
 }
