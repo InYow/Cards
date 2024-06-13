@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public GameObject LiziEFPrb;
     [HideInInspector]
     public TextMeshProUGUI textGUI;
     [HideInInspector]
@@ -253,6 +254,9 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
             float score = cardBehaviour.OnSettle(this);
             GameObject infogameObject = Instantiate(infoObj, transform);
+            GameObject lizief = Instantiate(LiziEFPrb, transform);
+            lizief.GetComponent<LiziEFX>().number = (int)score * 3;
+            lizief.GetComponent<LiziEFX>().Init();
             TextMeshProUGUI textMeshProUGUI = infogameObject.GetComponent<TextMeshProUGUI>();
             textMeshProUGUI.text = $"得分{score}";
             return score;
