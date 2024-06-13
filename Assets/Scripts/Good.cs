@@ -21,13 +21,7 @@ public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             image.sprite = Card.GetComponent<Card>().cardData.sprite;
         }
     }
-    public Image image;
-    private void Start()
-    {
-        image = GetComponent<Image>();
-        image.sprite = Card.GetComponent<Card>().cardData.sprite;
-    }
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    public Image image; void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
         Hole hole = CardPool._Instance.GetEmptyHole();
         if (hole == null)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cunqianguan :CardBehaviour
+public class cunqianguan : CardBehaviour
 {
     int oldRound = 0;
     int oldLevel = 0;
@@ -18,7 +18,7 @@ public class cunqianguan :CardBehaviour
         int gapRound = newRound - oldRound;
         int gapLevel = newLevel - oldLevel;
         int gap = gapRound * 3 - gapLevel;
-        RoundManager._Instance.gold += gap;
+        RoundManager._Instance.Gold += gap;
         card.SetChip(card.GetChip_Basis + card.GetChip_Beton);
         card.SetMult(card.GetMult_Basis);
 
@@ -26,7 +26,7 @@ public class cunqianguan :CardBehaviour
     public override float OnSettle(Card card)
     {
         float score = card.GetMult * card.GetChip;
-        Debug.Log($"{name}µÄµÃ·ÖÎª{card.GetChip}£¨³ïÂë£© * {card.GetMult}£¨±¶ÂÊ£© = {score} .");
+        Debug.Log($"{name}ï¿½ÄµÃ·ï¿½Îª{card.GetChip}ï¿½ï¿½ï¿½ï¿½ï¿½ë£© * {card.GetMult}ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ = {score} .");
         return score;
     }
 }

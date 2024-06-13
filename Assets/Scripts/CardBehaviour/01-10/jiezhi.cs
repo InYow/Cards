@@ -8,12 +8,12 @@ public class jiezhi : CardBehaviour
     {
         card.SetChip(card.GetChip_Basis + card.GetChip_Beton);
         card.SetMult(card.GetMult_Basis);
-        RoundManager._Instance.gold += 7;
+        RoundManager._Instance.Gold += 7;
     }
     public override float OnSettle(Card card)
     {
         float score = card.GetMult * card.GetChip;
-        Debug.Log($"{name}µÄµÃ·ÖÎª{card.GetChip}£¨³ïÂë£© * {card.GetMult}£¨±¶ÂÊ£© = {score} .");
+        Debug.Log($"{name}ï¿½ÄµÃ·ï¿½Îª{card.GetChip}ï¿½ï¿½ï¿½ï¿½ï¿½ë£© * {card.GetMult}ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ = {score} .");
         return score;
     }
 }
