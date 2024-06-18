@@ -10,7 +10,7 @@ public class shouzhang : CardBehaviour
     {
         if (addNum != 0)
         {
-            RoundManager._Instance.Gold += addNum;
+            RoundManager._Instance.gold += addNum;
             addNum -= 1;
             card.SetChip(card.GetChip_Basis + card.GetChip_Beton);
             card.SetMult(card.GetMult_Basis);
@@ -19,7 +19,7 @@ public class shouzhang : CardBehaviour
     public override float OnSettle(Card card)
     {
         float score = card.GetMult * card.GetChip;
-        Debug.Log($"{name}ï¿½ÄµÃ·ï¿½Îª{card.GetChip}ï¿½ï¿½ï¿½ï¿½ï¿½ë£© * {card.GetMult}ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ = {score} .");
+        Debug.Log($"{name}µÄµÃ·ÖÎª{card.GetChip}£¨³ïÂë£© * {card.GetMult}£¨±¶ÂÊ£© = {score} .");
         return score;
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 822025962736113453}
   - component: {fileID: 822025962736113452}
   m_Layer: 5
-  m_Name: Finger
+  m_Name: "\u624B\u81C2"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,7 +24,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822025962736113426}
-  m_LocalRotation: {x: -0, y: -0, z: 0.000000014901159, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6708797, w: 0.74156624}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32,11 +32,11 @@ RectTransform:
   - {fileID: 822025964716288564}
   m_Father: {fileID: 6363461290966423707}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 84.27}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225.79712, y: 0}
-  m_SizeDelta: {x: 1397, y: 698.4829}
+  m_AnchoredPosition: {x: 537, y: 122}
+  m_SizeDelta: {x: 1132.2876, y: 566.1299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822025962736113452
 MonoBehaviour:
@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 822025963871306973}
   - component: {fileID: 822025963871306946}
   - component: {fileID: 822025963871306974}
+  - component: {fileID: 6357138716579190089}
   m_Layer: 5
   m_Name: "\u5546\u5E97UI"
   m_TagString: Untagged
@@ -355,6 +356,27 @@ MonoBehaviour:
   - {fileID: 822025964608655262}
   - {fileID: 822025963547565472}
   - {fileID: 822025963104423284}
+--- !u!95 &6357138716579190089
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822025963871306947}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2d0f8d8c80ab50409dea5deb054b76e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &822025964499761962
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +389,7 @@ GameObject:
   - component: {fileID: 822025964499761959}
   - component: {fileID: 822025964499761956}
   m_Layer: 5
-  m_Name: Image
+  m_Name: "\u80CC\u666F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +556,7 @@ GameObject:
   - component: {fileID: 822025964716288566}
   - component: {fileID: 822025964716288567}
   m_Layer: 5
-  m_Name: Finger
+  m_Name: "\u56FE\u7247"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -557,7 +579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 341, y: 144}
+  m_AnchoredPosition: {x: 366, y: 66.176}
   m_SizeDelta: {x: 1397, y: 698.4829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &822025964716288566

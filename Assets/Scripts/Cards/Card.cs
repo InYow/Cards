@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject LiziEFPrb;
     [HideInInspector]
     public TextMeshProUGUI textGUI;
     [HideInInspector]
@@ -44,42 +43,31 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     {
         int index = GetHoleIndex();
         List<Hole> aholes = CardPool._Instance._Holes;
+
         //left
         Card left;
         int leftIndex = index;
-        /*        do
-                {
-                    leftIndex--;
-                    if (index < 0)
-                    {
-                        index += aholes.Count;
-                    }
-                } while (aholes[leftIndex].card == null);
-        */
-        leftIndex--;
-        if (index < 0)
+        if (index != 0)
+        {
+            leftIndex--;
+        }else
         {
             index += aholes.Count;
         }
         left = aholes[leftIndex].card;
+
         //right
         Card right;
         int rightIndex = index;
-        /*        do
-                {
-                    rightIndex++;
-                    if (index >= aholes.Count)
-                    {
-                        rightIndex -= aholes.Count;
-                    }
-                } while (aholes[rightIndex].card == null);
-        */
-        rightIndex++;
-        if (index >= aholes.Count)
+        if(index != aholes.Count)
+        {
+            rightIndex++;
+        }else
         {
             rightIndex -= aholes.Count;
         }
         right = aholes[rightIndex].card;
+
         NearCards near = new(left, right);
         return near;
     }
@@ -151,6 +139,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         //加载信息面板
         infoObj = Resources.Load<GameObject>("得分信息");
     }
+
     private void Init()
     {
         cardScore.chip_Basis = cardData.Chip_Basis;
@@ -186,11 +175,11 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public void OnChosen()
     {
         this.YesChoose();
-        if (boss.number == 1 && cardData.sort == "物品")
+        if(boss.number == 1 && cardData.sort == "物品")
         {
 
         }
-        else if (boss.number == 2 && cardData.sort == "器官")
+        else if(boss.number == 2 && cardData.sort=="器官")
         {
 
         }
@@ -198,13 +187,13 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
 
         }
-        else if (cardScore.abandon == true)
+        else if(cardScore.abandon==true)
         {
 
         }
         else
         {
-            cardBehaviour.OnChosen(this);
+        cardBehaviour.OnChosen(this);
         }
     }
     // 获得队列中卡牌的效果
@@ -242,11 +231,11 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
             return 0f;
         }
-        else if (cardScore.abandon == true)
+        else if (boss.number == 3 && cardData.sort == "骨头")
         {
             return 0f;
         }
-        else if (boss.number == 3 && cardData.sort == "骨头")
+        else if (cardScore.abandon == true)
         {
             return 0f;
         }
@@ -254,9 +243,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
             float score = cardBehaviour.OnSettle(this);
             GameObject infogameObject = Instantiate(infoObj, transform);
-            GameObject lizief = Instantiate(LiziEFPrb, transform);
-            lizief.GetComponent<LiziEFX>().number = (int)score * 3;
-            lizief.GetComponent<LiziEFX>().Init();
             TextMeshProUGUI textMeshProUGUI = infogameObject.GetComponent<TextMeshProUGUI>();
             textMeshProUGUI.text = $"得分{score}";
             return score;
@@ -290,21 +276,21 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     [ContextMenu("加注")]
     public void AddChip(int chip)
     {
-        if (RoundManager._Instance.Gold == 0)
+        if (RoundManager._Instance.gold == 0)
         {
             return;
         }
-        else if (RoundManager._Instance.Gold >= chip)
+        else if (RoundManager._Instance.gold >= chip)
         {
             cardScore.SetChip_BetOn(cardScore.GetChip_Beton + chip);
-            RoundManager._Instance.Gold -= chip;
+            RoundManager._Instance.gold -= chip;
         }
         else
         {
-            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.Gold);
-            RoundManager._Instance.Gold = 0;
+            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.gold);
+            RoundManager._Instance.gold = 0;
         }
-        PlayerUI._Instance.SetremainChips(RoundManager._Instance.Gold);
+        PlayerUI._Instance.SetremainChips(RoundManager._Instance.gold);
         Infoer.infoer.SetText(this);
         //ShowChipText();
     }
@@ -317,15 +303,15 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         }
         else if (this.cardScore.GetChip_Beton >= chip)
         {
-            RoundManager._Instance.Gold += chip;
+            RoundManager._Instance.gold += chip;
             cardScore.SetChip_BetOn(cardScore.GetChip_Beton - chip);
         }
         else
         {
-            RoundManager._Instance.Gold += cardScore.GetChip_Beton;
+            RoundManager._Instance.gold += cardScore.GetChip_Beton;
             cardScore.SetChip_BetOn(0);
         }
-        PlayerUI._Instance.SetremainChips(RoundManager._Instance.Gold);
+        PlayerUI._Instance.SetremainChips(RoundManager._Instance.gold);
         Infoer.infoer.SetText(this);
         //ShowChipText();
     }
@@ -368,7 +354,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public void Abandon(bool b)
     {
         cardScore.abandon = b;
-        if (b == true)
+        if(b==true)
         {
             Color color = new(0.5f, 0.5f, 0.5f, 0.6f);
             image.color = color;
@@ -378,4 +364,10 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             image.color = Color.white;
         }
     }
+
+    public void BasisReduce()
+    {
+        SetChip_Basis(GetChip_Basis - 1);
+    }
+
 }

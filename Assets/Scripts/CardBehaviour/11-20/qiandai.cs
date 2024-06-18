@@ -6,14 +6,14 @@ public class qiandai : CardBehaviour
 {
     public override void OnAward(Card card)
     {
-        int chipGold = RoundManager._Instance.Gold;
+        int chipGold = RoundManager._Instance.gold;
         card.SetChip(card.GetChip_Beton + chipGold);
         card.SetMult(card.GetMult_Basis);
     }
     public override float OnSettle(Card card)
     {
         float score = card.GetMult * card.GetChip;
-        Debug.Log($"{name}ï¿½ÄµÃ·ï¿½Îª{card.GetChip}ï¿½ï¿½ï¿½ï¿½ï¿½ë£© * {card.GetMult}ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ = {score} .");
+        Debug.Log($"{name}µÄµÃ·ÖÎª{card.GetChip}£¨³ïÂë£© * {card.GetMult}£¨±¶ÂÊ£© = {score} .");
         return score;
     }
 }
