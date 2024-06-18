@@ -252,8 +252,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             return score;
         }
     }
-
-
     // 回合结束
     public void OnTimeEnd()
     {
