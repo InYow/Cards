@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 
 public class Banana : CardBehaviour
-{ // Start is called before the first frame update
+{ 
     public override void OnAward(Card card)
     {
         List<Card> cards = CardPool._Instance._ChosenCards;
