@@ -9,7 +9,7 @@ public class rili : CardBehaviour
         if (RoundManager._Instance.Round % 2 == 0)
         {
             card.SetMult(card.GetMult_Basis);
-            RoundManager._Instance.gold += (int)card.GetMult;
+            RoundManager._Instance.Gold += (int)card.GetMult;
         }
         else
         {
@@ -20,7 +20,7 @@ public class rili : CardBehaviour
     public override float OnSettle(Card card)
     {
         float score = card.GetMult * card.GetChip;
-        Debug.Log($"{name}µÄµÃ·ÖÎª{card.GetChip}£¨³ïÂë£© * {card.GetMult}£¨±¶ÂÊ£© = {score} .");
+        Debug.Log($"{name}ï¿½ÄµÃ·ï¿½Îª{card.GetChip}ï¿½ï¿½ï¿½ï¿½ï¿½ë£© * {card.GetMult}ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ = {score} .");
         return score;
     }
 }
