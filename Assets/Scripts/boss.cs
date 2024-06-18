@@ -66,28 +66,28 @@ public class boss : MonoBehaviour
         switch (number)
         {
             case 1:
-                boss1();
+                boss1();        //黑山羊之女
                 break;
             case 2:
-                boss2();
+                boss2();        //伊斯人
                 break;
             case 3:
-                boss3();
+                boss3();        //修格斯
                 break;
             case 4:
-                boss4();
+                boss4();        //钻地魔虫
                 break;
             case 5:
-                boss5();
+                boss5();        //犹格索托斯
                 break;
             case 6:
-                boss6();
+                boss6();        //古老者
                 break;
             case 7:
-                boss7();
+                boss7();        //廷达洛斯猎犬
                 break;
             case 8:
-                boss8();
+                boss8();        //星之彩
                 break;
             default:
                 break;
@@ -120,17 +120,16 @@ public class boss : MonoBehaviour
                 boss7End();
                 break;
             case 8:
-                boss8();
+                boss8End();
                 break;
             default:
                 break;
         }
     }
 
-    void boss1()
+    void boss1()    
     {
-        imageBoss.sprite = bossSprite1; // 更换图片
-        //RoundManager._Instance.score -= 10;
+        imageBoss.sprite = bossSprite1;
     }
     void boss1End()
     {
@@ -187,7 +186,7 @@ public class boss : MonoBehaviour
     }
     void boss6()
     {
-        imageBoss.sprite = bossSprite6;
+        
     }
     void boss6End()
     {

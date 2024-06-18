@@ -43,42 +43,31 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     {
         int index = GetHoleIndex();
         List<Hole> aholes = CardPool._Instance._Holes;
+
         //left
         Card left;
         int leftIndex = index;
-        /*        do
-                {
-                    leftIndex--;
-                    if (index < 0)
-                    {
-                        index += aholes.Count;
-                    }
-                } while (aholes[leftIndex].card == null);
-        */
-        leftIndex--;
-        if (index < 0)
+        if (index != 0)
+        {
+            leftIndex--;
+        }else
         {
             index += aholes.Count;
         }
         left = aholes[leftIndex].card;
+
         //right
         Card right;
         int rightIndex = index;
-        /*        do
-                {
-                    rightIndex++;
-                    if (index >= aholes.Count)
-                    {
-                        rightIndex -= aholes.Count;
-                    }
-                } while (aholes[rightIndex].card == null);
-        */
-        rightIndex++;
-        if (index >= aholes.Count)
+        if(index != aholes.Count)
+        {
+            rightIndex++;
+        }else
         {
             rightIndex -= aholes.Count;
         }
         right = aholes[rightIndex].card;
+
         NearCards near = new(left, right);
         return near;
     }
@@ -150,6 +139,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         //加载信息面板
         infoObj = Resources.Load<GameObject>("得分信息");
     }
+
     private void Init()
     {
         cardScore.chip_Basis = cardData.Chip_Basis;
@@ -241,11 +231,11 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
             return 0f;
         }
-        else if (cardScore.abandon == true)
+        else if (boss.number == 3 && cardData.sort == "骨头")
         {
             return 0f;
         }
-        else if (boss.number == 3 && cardData.sort == "骨头")
+        else if (cardScore.abandon == true)
         {
             return 0f;
         }
@@ -374,4 +364,10 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
             image.color = Color.white;
         }
     }
+
+    public void BasisReduce()
+    {
+        SetChip_Basis(GetChip_Basis - 1);
+    }
+
 }

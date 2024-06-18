@@ -6,6 +6,7 @@ public class start : MonoBehaviour
 {
     public GameObject startUI;
     public GameObject gif;
+    public GameObject Guodu;
     public float skipDuration = 2.0f; // 长按持续时间
     private bool skipButtonDown = false; // 是否正在长按
     private float skipTimer = 0.0f; // 长按计时器
@@ -61,4 +62,17 @@ public class start : MonoBehaviour
         yield return new WaitForSeconds(delay);
         end = true;
     }
+
+
+    public void Transition()
+    {
+        StartCoroutine(TransitionDelay(1.75f));
+    }
+
+    public IEnumerator TransitionDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Guodu.SetActive(false);
+    }
+
 }

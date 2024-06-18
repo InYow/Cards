@@ -79,6 +79,7 @@ public class Shop : MonoBehaviour
                     UIGO.SetActive(true);
                     // 执行后续逻辑
                     ExecutePostAction();
+                    card.CardDestroy();
                     return;
                 }
             }
@@ -109,8 +110,18 @@ public class Shop : MonoBehaviour
     public void RemoveCard()
     {
         //启动协程
-        waitForUIActionCoroutine = true;
-        UIGO.SetActive(false);
+        if (RoundManager._Instance.gold >= 5)//移除时点击棋子，会导致下注一枚金币。
+        {
+            RoundManager._Instance.gold -= 4;
+            waitForUIActionCoroutine = true;
+            UIGO.SetActive(false);
+            Debug.Log("金币充足");
+        }
+        else
+        {
+            //跳字体，金币不足
+        }
+
     }
     IEnumerator WaitForUIAction()
     {
@@ -123,7 +134,6 @@ public class Shop : MonoBehaviour
     void ExecutePostAction()
     {
         // 在这里执行后续的逻辑
-        Debug.Log("执行后续的逻辑...");
         //扣钱，移除操作；
     }
 }
