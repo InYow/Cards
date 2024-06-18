@@ -9,7 +9,7 @@ public class rili : CardBehaviour
         if (RoundManager._Instance.Round % 2 == 0)
         {
             card.SetMult(card.GetMult_Basis);
-            RoundManager._Instance.Gold += (int)card.GetMult;
+            RoundManager._Instance.gold += (int)card.GetMult;
         }
         else
         {
