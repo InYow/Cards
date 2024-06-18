@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ef3c098459518419626fb68ddb382f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiziEFPrb: {fileID: 7307009543277992434, guid: 172c334cd67cb0b459003acf5eda5a1c, type: 3}
   textGUI: {fileID: 0}
   image: {fileID: 144032701}
   infoObj: {fileID: 0}
@@ -1022,6 +1023,7 @@ RectTransform:
   - {fileID: 2044867335}
   - {fileID: 805135037}
   - {fileID: 852530901}
+  - {fileID: 371669369}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1085,6 +1087,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 0}
+--- !u!1 &371669368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371669369}
+  m_Layer: 5
+  m_Name: RNM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &371669369
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371669368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 211731135}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 223, y: -214}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &388273809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ef3c098459518419626fb68ddb382f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiziEFPrb: {fileID: 7307009543277992434, guid: 172c334cd67cb0b459003acf5eda5a1c, type: 3}
   textGUI: {fileID: 0}
   image: {fileID: 483728994}
   infoObj: {fileID: 0}
@@ -3296,6 +3335,51 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &954706916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954706918}
+  - component: {fileID: 954706917}
+  m_Layer: 0
+  m_Name: ItemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &954706917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954706916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6a568f097149e4ea8dda7916cb91ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList: []
+--- !u!4 &954706918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954706916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 984.0966, y: 591.24664, z: 1.9319874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043176921
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,6 +4396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ef3c098459518419626fb68ddb382f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LiziEFPrb: {fileID: 7307009543277992434, guid: 172c334cd67cb0b459003acf5eda5a1c, type: 3}
   textGUI: {fileID: 0}
   image: {fileID: 1277200309}
   infoObj: {fileID: 0}
@@ -5647,13 +5732,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bca982fe01eae4185c4171688b3878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteList: []
+  remainRefreshTimes: 0
   Round: 1
   Level: 1
   remainTimes: 3
   chooseNumber: 2
   score_Must: 10
   score: 0
-  gold: 5
+  removeGold: 6
+  removeIncreaseGold: 3
   shop: {fileID: 822025963871306947, guid: ebed64493c610124e82cbb369c1db1d8, type: 3}
   isUsing: 0
 --- !u!4 &1959403511

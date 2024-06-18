@@ -23,8 +23,15 @@ public class yanjingg : CardBehaviour
         gap = now - old;
 
         Card.NearCards nearCards = card.GetNearCards();
-        nearCards.left.SetMult_Basis(card.GetMult_Basis + ((float)0.2 * gap));
-        nearCards.right.SetMult_Basis(card.GetMult_Basis + ((float)0.2 * gap));
+        if (nearCards.left != null)
+        {
+            nearCards.left.SetMult_Basis(card.GetMult_Basis + ((float)0.2 * gap));
+        }
+        if (nearCards.right != null)
+        {
+            nearCards.right.SetMult_Basis(card.GetMult_Basis + ((float)0.2 * gap));
+        }
+
         card.SetMult_Basis(card.GetMult_Basis + ((float)0.2 * gap));
 
         card.SetChip(card.GetChip_Basis + card.GetChip_Beton);

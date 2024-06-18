@@ -10,14 +10,14 @@ public class wei : CardBehaviour
     {
         base.OnChosen(card);
         Card.NearCards nearCards = card.GetNearCards();
-        //if(nearCards.left != null)
-        //{
+        if(nearCards.left != null)
+        {
             chip = nearCards.left.GetChip_Basis;
-        //}
-        //if (nearCards.right != null)
-        //{
+        }
+        if (nearCards.right != null)
+        {
             mult = nearCards.right.GetMult_Basis;
-        //}
+        }
     }
     public override void OnAward(Card card)
     {
