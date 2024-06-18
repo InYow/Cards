@@ -8,7 +8,10 @@ public class youquan : CardBehaviour
     {
         base.OnChosen(card);
         Card.NearCards nearCards = card.GetNearCards();
-        nearCards.right.CardDestroy();
+        if(nearCards.right != null)
+        {
+            nearCards.right.CardDestroy();
+        }
     }
     public override void OnAward(Card card)
     {

@@ -21,10 +21,10 @@ public class zhichang : CardBehaviour
             oldTimes = RoundManager._Instance.remainTimes;
             isChosen = true;
         }
-
+        
         if (isChosen == true)
         {
-            if (RoundManager._Instance.Round * 9 + RoundManager._Instance.Level * 3 + RoundManager._Instance.remainTimes > oldRound * 9 + oldLevel * 3 + oldTimes)
+            if (RoundManager._Instance.Round*9+RoundManager._Instance.Level*3+RoundManager._Instance.remainTimes > oldRound*9 + oldLevel*3 + oldTimes)
             {
                 isCan = true;
             }
@@ -34,6 +34,7 @@ public class zhichang : CardBehaviour
         {
             isCan = false;
             isChosen = false;
+            RoundManager._Instance.Gold += 10;
             RoundManager._Instance.Gold += 10;
         }
     }
