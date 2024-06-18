@@ -18,6 +18,4 @@ public class CardData : ScriptableObject
     public string effect;
     [TextArea(3, 10)]
     public string description;
-    [TextArea (3,10)]
-    public string Tag;
 }
