@@ -1,27 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
     public GameObject UIGO;
     private bool waitForUIActionCoroutine;// 移除神符的操作
     public static Shop _Instance;
-    public Good goodPrb;
-    public Transform gOODS;
     public List<Good> goods;
     private string folderPath = "Prefab/Card"; // 文件夹路径
     private GameObject[] prefabs; // 存储加载的预制体
-    [Header("移除服务")]
-    public Button removeBtn;//移除服务的按钮
-    public TextMeshProUGUI removeTextGUI;//移除服务的文字说明
-    [Header("刷新服务")]
-    public Image refreshBtnImage;
-    public Button refreshBtn;
     void LoadPrefabs()
     {
         Object[] loadedPrefabs = Resources.LoadAll(folderPath, typeof(GameObject));
@@ -45,17 +35,6 @@ public class Shop : MonoBehaviour
         if (_Instance == null)
         {
             _Instance = this;
-            if (ItemManager.Instance.FindItemWithID(4) != null)
-            {
-                removeBtn.interactable = false;
-                //刷新
-                if (RoundManager._Instance.remainRefreshTimes == 0)
-                {
-                    refreshBtn.interactable = false;
-                }
-                refreshBtnImage.sprite = RoundManager._Instance.spriteList[RoundManager._Instance.remainRefreshTimes];
-                //
-            }
         }
         else
         {
@@ -64,33 +43,7 @@ public class Shop : MonoBehaviour
     }
     private void Start()
     {
-        //刷新
-        if (RoundManager._Instance.remainRefreshTimes == 0)
-        {
-            refreshBtn.interactable = false;
-        }
-        refreshBtnImage.sprite = RoundManager._Instance.spriteList[RoundManager._Instance.remainRefreshTimes];
-        //
-        string str = $"移除服务 <#ff0000>({(int)RoundManager._Instance.removeGold}金币)</color>";
-        if (ItemManager.Instance.FindItemWithID(6) != null)
-        {
-            str = $"移除服务 <#ff0000>({(int)(RoundManager._Instance.removeGold * 0.5f)}金币)</color>";
-        }
-        removeTextGUI.text = str;
         LoadPrefabs();
-        int i = 3;
-        if (ItemManager.Instance.FindItemWithID(2) != null)
-            i = 4;
-        if (ItemManager.Instance.FindItemWithID(4) != null)
-        {
-            removeBtn.interactable = false;
-        }
-        while (i > 0)
-        {
-            Good G = Instantiate(goodPrb, gOODS);
-            goods.Add(G);
-            i--;
-        }
         foreach (var item in goods)
         {
             item.Card = RandomInitCard();
@@ -142,23 +95,14 @@ public class Shop : MonoBehaviour
     [ContextMenu("重投")]
     public void Refresh()
     {
-        if (RoundManager._Instance.remainRefreshTimes > 0)
+        foreach (var item in goods)
         {
-            RoundManager._Instance.remainRefreshTimes--;
-            refreshBtnImage.sprite = RoundManager._Instance.spriteList[RoundManager._Instance.remainRefreshTimes];
-            foreach (var item in goods)
+            GameObject GO;
+            do
             {
-                GameObject GO;
-                do
-                {
-                    GO = RandomInitCard();
-                } while (GO == item.Card);
-                item.Card = GO;
-            }
-        }
-        if (RoundManager._Instance.remainRefreshTimes == 0)
-        {
-            refreshBtn.interactable = false;
+                GO = RandomInitCard();
+            } while (GO == item.Card);
+            item.Card = GO;
         }
     }
     //销毁神符
@@ -166,9 +110,9 @@ public class Shop : MonoBehaviour
     public void RemoveCard()
     {
         //启动协程
-        if (RoundManager._Instance.Gold >= 5)//移除时点击棋子，会导致下注一枚金币。
+        if (RoundManager._Instance.gold >= 5)//移除时点击棋子，会导致下注一枚金币。
         {
-            RoundManager._Instance.Gold -= 4;
+            RoundManager._Instance.gold -= 4;
             waitForUIActionCoroutine = true;
             UIGO.SetActive(false);
             Debug.Log("金币充足");
@@ -178,26 +122,6 @@ public class Shop : MonoBehaviour
             //跳字体，金币不足
         }
 
-        //有神符06
-        if (ItemManager.Instance.FindItemWithID(6))
-        {
-            if (RoundManager._Instance.Gold > RoundManager._Instance.removeGold * 0.5f)
-            {
-                RoundManager._Instance.Gold -= (int)(RoundManager._Instance.removeGold * 0.5f);
-                RoundManager._Instance.removeGold += RoundManager._Instance.removeIncreaseGold;
-                //启动协程
-                waitForUIActionCoroutine = true;
-                UIGO.SetActive(false);
-            }
-        }
-        else if (RoundManager._Instance.Gold > RoundManager._Instance.removeGold)
-        {
-            RoundManager._Instance.Gold -= RoundManager._Instance.removeGold;
-            RoundManager._Instance.removeGold += RoundManager._Instance.removeIncreaseGold;
-            //启动协程
-            waitForUIActionCoroutine = true;
-            UIGO.SetActive(false);
-        }
     }
     IEnumerator WaitForUIAction()
     {

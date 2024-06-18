@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject LiziEFPrb;
     [HideInInspector]
     public TextMeshProUGUI textGUI;
     [HideInInspector]
@@ -176,11 +175,11 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public void OnChosen()
     {
         this.YesChoose();
-        if (boss.number == 1 && cardData.sort == "物品")
+        if(boss.number == 1 && cardData.sort == "物品")
         {
 
         }
-        else if (boss.number == 2 && cardData.sort == "器官")
+        else if(boss.number == 2 && cardData.sort=="器官")
         {
 
         }
@@ -188,13 +187,13 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
 
         }
-        else if (cardScore.abandon == true)
+        else if(cardScore.abandon==true)
         {
 
         }
         else
         {
-            cardBehaviour.OnChosen(this);
+        cardBehaviour.OnChosen(this);
         }
     }
     // 获得队列中卡牌的效果
@@ -244,9 +243,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         {
             float score = cardBehaviour.OnSettle(this);
             GameObject infogameObject = Instantiate(infoObj, transform);
-            GameObject lizief = Instantiate(LiziEFPrb, transform);
-            lizief.GetComponent<LiziEFX>().number = (int)score * 3;
-            lizief.GetComponent<LiziEFX>().Init();
             TextMeshProUGUI textMeshProUGUI = infogameObject.GetComponent<TextMeshProUGUI>();
             textMeshProUGUI.text = $"得分{score}";
             return score;
@@ -280,21 +276,21 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     [ContextMenu("加注")]
     public void AddChip(int chip)
     {
-        if (RoundManager._Instance.Gold == 0)
+        if (RoundManager._Instance.gold == 0)
         {
             return;
         }
-        else if (RoundManager._Instance.Gold >= chip)
+        else if (RoundManager._Instance.gold >= chip)
         {
             cardScore.SetChip_BetOn(cardScore.GetChip_Beton + chip);
-            RoundManager._Instance.Gold -= chip;
+            RoundManager._Instance.gold -= chip;
         }
         else
         {
-            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.Gold);
-            RoundManager._Instance.Gold = 0;
+            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.gold);
+            RoundManager._Instance.gold = 0;
         }
-        PlayerUI._Instance.SetremainChips(RoundManager._Instance.Gold);
+        PlayerUI._Instance.SetremainChips(RoundManager._Instance.gold);
         Infoer.infoer.SetText(this);
         //ShowChipText();
     }
@@ -307,15 +303,15 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         }
         else if (this.cardScore.GetChip_Beton >= chip)
         {
-            RoundManager._Instance.Gold += chip;
+            RoundManager._Instance.gold += chip;
             cardScore.SetChip_BetOn(cardScore.GetChip_Beton - chip);
         }
         else
         {
-            RoundManager._Instance.Gold += cardScore.GetChip_Beton;
+            RoundManager._Instance.gold += cardScore.GetChip_Beton;
             cardScore.SetChip_BetOn(0);
         }
-        PlayerUI._Instance.SetremainChips(RoundManager._Instance.Gold);
+        PlayerUI._Instance.SetremainChips(RoundManager._Instance.gold);
         Infoer.infoer.SetText(this);
         //ShowChipText();
     }
@@ -358,7 +354,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public void Abandon(bool b)
     {
         cardScore.abandon = b;
-        if (b == true)
+        if(b==true)
         {
             Color color = new(0.5f, 0.5f, 0.5f, 0.6f);
             image.color = color;
