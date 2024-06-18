@@ -25,20 +25,20 @@ public class PlayerUI : MonoBehaviour
         SetRound(RoundManager._Instance.Round);
         SetLevel(RoundManager._Instance.Level);
         SetremainTimes(RoundManager._Instance.remainTimes);
-        SetremainChips(RoundManager._Instance.gold);
+        SetremainChips(RoundManager._Instance.Gold);
         SetscoreMust(RoundManager._Instance.score_Must);
         SetScore(RoundManager._Instance.score);
-        SetGold(RoundManager._Instance.gold);
+        SetGold(RoundManager._Instance.Gold);
     }
     private void Update()
     {
         SetRound(RoundManager._Instance.Round);
         SetLevel(RoundManager._Instance.Level);
         SetremainTimes(RoundManager._Instance.remainTimes);
-        SetremainChips(RoundManager._Instance.gold);
+        SetremainChips(RoundManager._Instance.Gold);
         SetscoreMust(RoundManager._Instance.score_Must);
         SetScore(RoundManager._Instance.score);
-        SetGold(RoundManager._Instance.gold);
+        SetGold(RoundManager._Instance.Gold);
     }
     public void SetRound(int number)
     {

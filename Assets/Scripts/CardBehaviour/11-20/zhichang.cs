@@ -34,14 +34,15 @@ public class zhichang : CardBehaviour
         {
             isCan = false;
             isChosen = false;
-            RoundManager._Instance.gold += 10;
+            RoundManager._Instance.Gold += 10;
+            RoundManager._Instance.Gold += 10;
         }
     }
 
     public override float OnSettle(Card card)
     {
         float score = card.GetMult * card.GetChip;
-        Debug.Log($"{name}µÄµÃ·ÖÎª{card.GetChip}£¨³ïÂë£© * {card.GetMult}£¨±¶ÂÊ£© = {score} .");
+        Debug.Log($"{name}ï¿½ÄµÃ·ï¿½Îª{card.GetChip}ï¿½ï¿½ï¿½ï¿½ï¿½ë£© * {card.GetMult}ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ = {score} .");
         return score;
     }
 }
