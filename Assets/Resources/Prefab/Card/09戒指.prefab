@@ -114,7 +114,6 @@ MonoBehaviour:
   mult: 0
   chip_Basis: 0
   mult_Basis: 0
-  abandon: 0
 --- !u!114 &6534055585686230952
 MonoBehaviour:
   m_ObjectHideFlags: 0

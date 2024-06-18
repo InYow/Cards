@@ -9,10 +9,7 @@ public class zuoquan : CardBehaviour
     {
         base.OnChosen(card);
         Card.NearCards nearCards = card.GetNearCards();
-        if(nearCards.left != null)
-        {
-            nearCards.left.CardDestroy();
-        }
+        nearCards.left.CardDestroy();
     }
     public override void OnAward(Card card)
     {
@@ -25,4 +22,6 @@ public class zuoquan : CardBehaviour
         Debug.Log($"{name}的得分为{card.GetChip}（筹码） * {card.GetMult}（倍率） = {score} .");
         return score;
     }
+
+
 }

@@ -164,6 +164,7 @@ public class Shop : MonoBehaviour
     [ContextMenu("销毁")]
     public void RemoveCard()
     {
+<<<<<<< HEAD
         //有神符06
         if (ItemManager.Instance.FindItemWithID(6))
         {
@@ -184,6 +185,11 @@ public class Shop : MonoBehaviour
             waitForUIActionCoroutine = true;
             UIGO.SetActive(false);
         }
+=======
+        //启动协程
+        waitForUIActionCoroutine = true;
+        UIGO.SetActive(false);
+>>>>>>> parent of 182cada (6.18)
     }
     IEnumerator WaitForUIAction()
     {

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class jianjiagu : CardBehaviour
 {
+    public override void OnTimeStart(Card card)     //第一次回合开始重置筹码
+    {
+        card.SetChip(2);
+        card.SetChip_Basis(1);
+    }
     public override void OnAward(Card card)
     {
-        List<Card> cards = CardPool._Instance._Cards;
-        foreach (var item in cards)
-        {
-            if(item.cardData.id == 21)
-            item.SetMult_Basis((int)item.GetMult_Basis + 1);
-        }
+        card.SetMult_Basis(card.GetMult_Basis + 1); 
         card.SetChip(card.GetChip_Basis + card.GetChip_Beton);
         card.SetMult(card.GetMult_Basis);
     }

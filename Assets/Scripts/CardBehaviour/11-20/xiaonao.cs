@@ -19,6 +19,7 @@ public class xiaonao : CardBehaviour
         }
         else
         {
+
             swap = false;
             chip = card.GetChip_Basis + card.GetChip_Beton;
             mult = card.GetMult_Basis;

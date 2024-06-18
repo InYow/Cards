@@ -12,6 +12,7 @@ public class wei : CardBehaviour
         Card.NearCards nearCards = card.GetNearCards();
         if(nearCards.left != null)
         {
+            //nearCards.left.SetChip();
             chip = nearCards.left.GetChip_Basis;
         }
         if (nearCards.right != null)
