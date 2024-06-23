@@ -11,7 +11,7 @@ public class tingzhenqi : CardBehaviour
         {
             if (item.cardData.sort == "Æ÷¹Ù")
             {
-                item.cardData.Mult_Basis += 1;
+                item.SetMult_Basis(item.GetMult + 1);
                 card.SetMult_Basis(card.GetMult_Basis + 1);
             }
 

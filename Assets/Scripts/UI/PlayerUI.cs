@@ -62,7 +62,7 @@ public class PlayerUI : MonoBehaviour
     }
     public void SetScore(int number)
     {
-        scoreGUI.text = $"得分 {number}";
+        scoreGUI.text = $"精神力 {number}";
     }
     public void SetGold(int number)
     {

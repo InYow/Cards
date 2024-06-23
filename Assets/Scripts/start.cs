@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class start : MonoBehaviour
 {
@@ -60,5 +61,17 @@ public class start : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         end = true;
+    }
+    public void LoadScene00()
+    {
+        Animator animator = GameObject.Find("¿ªÊ¼UI").GetComponent<Animator>();
+        animator.Play("¹ý¶É");
+        StartCoroutine(SetDelayed(0.5f));
+    }
+
+    IEnumerator SetDelayed( float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(1);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Item10 : Item
 {
@@ -10,7 +11,10 @@ public class Item10 : Item
     public int costGold = 2;
     void Start()
     {
-
+        image = GetComponent<Image>();
+        rectTrs = GetComponent<RectTransform>();
+        //初始化
+        image.sprite = sprite;
     }
 
     // Update is called once per frame

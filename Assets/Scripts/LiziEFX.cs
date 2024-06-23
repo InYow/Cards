@@ -15,6 +15,7 @@ public class LiziEFX : MonoBehaviour
     public float speed;
     public float destroyDistance;
     public float time = 0.2f;
+    public float DestoryTime = 2f;
     public int sort;
     public Canvas canvas;
 
@@ -22,6 +23,10 @@ public class LiziEFX : MonoBehaviour
     {
         canvas.sortingOrder = sort;
         int a = number;
+        if(a>100)
+        {
+            a = 100;
+        }
         moving = false;
         while (a > 0)
         {
@@ -41,6 +46,7 @@ public class LiziEFX : MonoBehaviour
 
     private void Update()
     {
+        DestoryTime -= Time.deltaTime;
         time -= Time.deltaTime;
         if (time < 0f)
         {
@@ -55,6 +61,10 @@ public class LiziEFX : MonoBehaviour
             }
             dic = dic.normalized;
             transform.localPosition += dic * speed * Time.deltaTime;
+        }
+        if(DestoryTime<0)
+        {
+            Destroy(gameObject);
         }
     }
     [ContextMenu("日你妈")]

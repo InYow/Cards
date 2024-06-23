@@ -6,7 +6,7 @@ public class shuimian : CardBehaviour
 {
     public override void OnAward(Card card)
     {
-        List<Card> cards = CardPool._Instance._ChosenCards;
+        List<Card> cards = CardPool._Instance._Cards;
         List<Card> chosenCards = CardPool._Instance._ChosenCards;
         foreach (var chosenItem in chosenCards)
         {

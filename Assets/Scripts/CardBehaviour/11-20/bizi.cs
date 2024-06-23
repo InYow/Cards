@@ -6,7 +6,7 @@ public class bizi : CardBehaviour
 {
     public override void OnAward(Card card)
     {
-        if(card.GetChip_Basis != 0) 
+        if(card.GetChip_Basis >0) 
         {
             card.SetChip_Basis(card.GetChip_Basis - 1);
             card.SetChip(card.GetChip_Basis + card.GetChip_Beton);

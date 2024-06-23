@@ -8,7 +8,7 @@ public class jiezhi : CardBehaviour
     {
         card.SetChip(card.GetChip_Basis + card.GetChip_Beton);
         card.SetMult(card.GetMult_Basis);
-        RoundManager._Instance.Gold += 7;
+        RoundManager._Instance.Gold += 3;
     }
     public override float OnSettle(Card card)
     {

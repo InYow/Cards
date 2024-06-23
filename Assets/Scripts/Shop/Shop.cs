@@ -11,7 +11,7 @@ public class Shop : MonoBehaviour
     public GameObject UIGO;
     private bool waitForUIActionCoroutine;// 移除神符的操作
     public static Shop _Instance;
-    public Good goodPrb;
+    public GameObject goodPrb;
     public Transform gOODS;
     public List<Good> goods;
     private string folderPath = "Prefab/Card"; // 文件夹路径
@@ -22,6 +22,7 @@ public class Shop : MonoBehaviour
     [Header("刷新服务")]
     public Image refreshBtnImage;
     public Button refreshBtn;
+    public Animator animator;
     void LoadPrefabs()
     {
         Object[] loadedPrefabs = Resources.LoadAll(folderPath, typeof(GameObject));
@@ -64,6 +65,7 @@ public class Shop : MonoBehaviour
     }
     private void Start()
     {
+        GameObject.Find("商店过渡").GetComponent<AudioSource>().Play();
         //刷新
         if (RoundManager._Instance.remainRefreshTimes == 0)
         {
@@ -71,12 +73,8 @@ public class Shop : MonoBehaviour
         }
         refreshBtnImage.sprite = RoundManager._Instance.spriteList[RoundManager._Instance.remainRefreshTimes];
         //
-        string str = $"移除服务 <#ff0000>({(int)RoundManager._Instance.removeGold}金币)</color>";
-        if (ItemManager.Instance.FindItemWithID(6) != null)
-        {
-            str = $"移除服务 <#ff0000>({(int)(RoundManager._Instance.removeGold * 0.5f)}金币)</color>";
-        }
-        removeTextGUI.text = str;
+        ShowRemoveBtnText();
+        //
         LoadPrefabs();
         int i = 3;
         if (ItemManager.Instance.FindItemWithID(2) != null)
@@ -87,7 +85,8 @@ public class Shop : MonoBehaviour
         }
         while (i > 0)
         {
-            Good G = Instantiate(goodPrb, gOODS);
+            GameObject GO = Instantiate(goodPrb, gOODS); ;
+            Good G = GO.GetComponentInChildren<Good>();
             goods.Add(G);
             i--;
         }
@@ -96,12 +95,24 @@ public class Shop : MonoBehaviour
             item.Card = RandomInitCard();
         }
     }
+
+    public void ShowRemoveBtnText()
+    {
+        string str = $" <#ff0000>移除服务({(int)RoundManager._Instance.removeGold }金币)</color>";
+        if (ItemManager.Instance.FindItemWithID(6) != null)
+        {
+            str = $" <#ff0000>移除服务({(int)(RoundManager._Instance.removeGold * 0.5f) }金币)</color>";
+        }
+        removeTextGUI.text = str;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+/*        if (Input.GetKeyDown(KeyCode.S))
         {
             Destroy(gameObject);
         }
+*/
         // 检测鼠标点击
         if (waitForUIActionCoroutine && Input.GetMouseButtonDown(0))
         {
@@ -123,9 +134,10 @@ public class Shop : MonoBehaviour
                     Debug.Log($"选择{card.cardData.cardName}");
                     // 结束协程并继续后续逻辑
                     waitForUIActionCoroutine = false;
+                    RoundManager._Instance.isRemoving = false;
                     UIGO.SetActive(true);
                     // 执行后续逻辑
-                    ExecutePostAction();
+                    ExecutePostAction(card);
                     return;
                 }
             }
@@ -134,13 +146,24 @@ public class Shop : MonoBehaviour
         {
             // 取消
             waitForUIActionCoroutine = false;
+            RoundManager._Instance.isRemoving = false;
             UIGO.SetActive(true);
         }
     }
+
+    //跳过商店
+    [ContextMenu("跳过")]
+    public void Skip()
+    {
+        GameObject.Find("跳过").GetComponent<AudioSource>().Play();
+        Destroy(gameObject);
+    }
+
     //重投商店
     [ContextMenu("重投")]
     public void Refresh()
     {
+        GameObject.Find("刷新").GetComponent<AudioSource>().Play();
         if (RoundManager._Instance.remainRefreshTimes > 0)
         {
             RoundManager._Instance.remainRefreshTimes--;
@@ -167,21 +190,24 @@ public class Shop : MonoBehaviour
         //有神符06
         if (ItemManager.Instance.FindItemWithID(6))
         {
-            if (RoundManager._Instance.Gold > RoundManager._Instance.removeGold * 0.5f)
+            if (RoundManager._Instance.Gold >= (int)(RoundManager._Instance.removeGold * 0.5f) - 1)
             {
-                RoundManager._Instance.Gold -= (int)(RoundManager._Instance.removeGold * 0.5f);
+                RoundManager._Instance.Gold -= (int)(RoundManager._Instance.removeGold * 0.5f) - 1;
                 RoundManager._Instance.removeGold += RoundManager._Instance.removeIncreaseGold;
                 //启动协程
                 waitForUIActionCoroutine = true;
+                RoundManager._Instance.isRemoving = true;
                 UIGO.SetActive(false);
+
             }
         }
-        else if (RoundManager._Instance.Gold > RoundManager._Instance.removeGold)
+        else if (RoundManager._Instance.Gold >= (int)RoundManager._Instance.removeGold )
         {
-            RoundManager._Instance.Gold -= RoundManager._Instance.removeGold;
+            RoundManager._Instance.Gold -= (int) RoundManager._Instance.removeGold ;
             RoundManager._Instance.removeGold += RoundManager._Instance.removeIncreaseGold;
             //启动协程
             waitForUIActionCoroutine = true;
+            RoundManager._Instance.isRemoving = true;
             UIGO.SetActive(false);
         }
     }
@@ -193,10 +219,16 @@ public class Shop : MonoBehaviour
         yield return new WaitUntil(() => false);
     }
 
-    void ExecutePostAction()
+    void ExecutePostAction(Card card)
     {
         // 在这里执行后续的逻辑
         Debug.Log("执行后续的逻辑...");
         //扣钱，移除操作；
+        GameObject.Find("删除").GetComponent<AudioSource>().Play();
+        card.CardDestroy();
+    }
+    public void DestroyThisGO()
+    {
+        Destroy(gameObject);
     }
 }

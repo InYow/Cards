@@ -6,7 +6,7 @@ using UnityEngine;
 public class CardPool : MonoBehaviour
 {
     public static CardPool _Instance;
-    private boss boss;
+    private BOSS boss;
     public List<Hole> _Holes = new();
     // 卡牌池中的
     public List<Card> _Cards = new();
@@ -40,8 +40,15 @@ public class CardPool : MonoBehaviour
 
     }
     //抽牌
-    public void ChosenCard(int number)
+    public void ChosenCard(int n)
     {
+        //处理抽取的数量
+        int number = n;
+        if(number >= _Cards.Count)
+        {
+            number--;
+        }
+        //
         _ChosenCards.Clear();
         List<Card> cards = new();
         if (_Cards.Count == 0)
@@ -54,6 +61,14 @@ public class CardPool : MonoBehaviour
             cards.Add(_Cards[index]);
         }
         _ChosenCards = cards;
+        //BOSS->6
+        if(BOSS._Instance.number==6)
+        {
+            foreach (var card in _ChosenCards)
+            {
+                card.cardScore.chip_Basis = (int)(card.cardScore.chip_Basis - 1) / 2;
+            }
+        }
         for (int i = 0; i < _ChosenCards.Count; i++)
         {
             //被选中的调用
@@ -79,7 +94,7 @@ public class CardPool : MonoBehaviour
     {
         if(boss==null)
         {
-            Debug.Log("boss?");
+            Debug.Log("BOSS?");
         }
         if (boss.number == 5)
         {
@@ -109,11 +124,15 @@ public class CardPool : MonoBehaviour
     public float Settle()
     {
         float score = 0f;
-        foreach (var item in _ChosenCards)
+        for (int i = 0; i < _ChosenCards.Count; i++)
+        {
+            score += _ChosenCards[i].OnSettle();
+        }
+/*        foreach (var item in _ChosenCards)
         {
             score += item.OnSettle();
         }
-        return score;
+*/        return score;
     }
 
     public Hole GetEmptyHole()
@@ -130,6 +149,6 @@ public class CardPool : MonoBehaviour
     private void Start()
     {
         GameObject BOSSGO = GameObject.Find("boss");
-        boss = BOSSGO.GetComponent<boss>();
+        boss = BOSSGO.GetComponent<BOSS>();
     }
 }

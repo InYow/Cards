@@ -12,6 +12,8 @@ public class Infoer : MonoBehaviour
     public TextMeshProUGUI chipGUI;
     public TextMeshProUGUI descripGUI;
     public TextMeshProUGUI jokeGUI;
+    public float xL;
+    public float xR;
     private void Awake()
     {
         if (infoer == null)
@@ -29,14 +31,32 @@ public class Infoer : MonoBehaviour
         CardScore cardScore = card.cardScore;
         if (cardScore == null)
         {
-            chipGUI.text = $"(<#64c0c0>{card.cardData.Chip_Basis}</color>)³ïÂë \n(<#64c0c0>{card.cardData.Mult_Basis}</color>)±¶ÂÊ";
+            chipGUI.text = $"(<#000000>{card.cardData.Chip_Basis}</color>)³ïÂë \n(<#000000>{card.cardData.Mult_Basis}</color>)±¶ÂÊ";
         }
         else
         {
-            chipGUI.text = $"(<#64c0c0>{cardScore.GetChip_Basis}</color>+<#ff6600>{cardScore.GetChip_Beton}</color>)³ïÂë \n(<#64c0c0>{cardScore.GetMult_Basis}</color>)±¶ÂÊ";//³ïÂë±¶ÂÊ
+            chipGUI.text = $"(<#000000>{cardScore.GetChip_Basis}</color>+<#ff6600>{cardScore.GetChip_Beton}</color>)³ïÂë \n(<#000000>{cardScore.GetMult_Basis}</color>)±¶ÂÊ";//³ïÂë±¶ÂÊ
         }
         descripGUI.text = card.cardData.effect;//Ð§¹û
         jokeGUI.text = card.cardData.description;//ÃèÊö
         image.sprite = card.cardData.sprite_color;//Í¼Æ¬
+    }
+    private void Update()
+    {
+        if(transform.localPosition.x>0)
+        {
+            //ÆÁÄ»ÓÒ±ß
+            Vector2 vector2 = GetComponent<RectTransform>().pivot;
+            vector2.x = xR;
+            GetComponent<RectTransform>().pivot = vector2;
+        }
+        else
+        {
+            //ÆÁÄ»×ó±ß
+            Vector2 vector2 = GetComponent<RectTransform>().pivot;
+            vector2.x = xL;
+            GetComponent<RectTransform>().pivot = vector2;
+        }
+        //Debug.Log(transform.localPosition.x);
     }
 }

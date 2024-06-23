@@ -8,7 +8,9 @@ public class ItemInfoer : MonoBehaviour
 {
     public static ItemInfoer infoer;
     public Image image;
+    public TextMeshProUGUI nameGUI;
     public TextMeshProUGUI desGUI;
+    public TextMeshProUGUI saohuaGUI;
     private void Awake()
     {
         if (infoer == null)
@@ -34,6 +36,9 @@ public class ItemInfoer : MonoBehaviour
     public void SetText(Item item)
     {
         image.sprite = item.sprite;
+
+        nameGUI.text = item.nameStr;
         desGUI.text = item.desStr;
+        saohuaGUI.text = item.saohua;
     }
 }

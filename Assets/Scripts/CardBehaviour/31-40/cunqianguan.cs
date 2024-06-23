@@ -18,8 +18,8 @@ public class cunqianguan : CardBehaviour
     }
     public override void OnAward(Card card)
     {
-        old = oldRound * 9 + oldLevel * 3 + oldTimes;
-        now = RoundManager._Instance.Round * 9 + RoundManager._Instance.Level * 3 + RoundManager._Instance.remainTimes;
+        old = oldRound * 9 + oldLevel * 3 - oldTimes;
+        now = RoundManager._Instance.Round * 9 + RoundManager._Instance.Level * 3 - RoundManager._Instance.remainTimes;
         remainGold = now - old;
         RoundManager._Instance.Gold += remainGold;
 

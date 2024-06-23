@@ -8,6 +8,7 @@ public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 {
     public float speed;
     private GameObject card;
+    public float distance;
     public GameObject Card
     {
         get
@@ -29,6 +30,7 @@ public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
             return;
         }
         Debug.Log("点击了");
+        GameObject.Find("加入神符").GetComponent<AudioSource>().Play();
         Vector2 targetPos = hole.gameObject.transform.position;
         Debug.Log(targetPos);
         StartCoroutine(IEAddToPool(targetPos, speed, hole));
@@ -36,13 +38,14 @@ public class Good : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
 
     private IEnumerator IEAddToPool(Vector2 Pos, float speed, Hole hole)
     {
-        while ((Pos - (Vector2)transform.position).magnitude > 5)
+        while ((Pos - (Vector2)transform.position).magnitude > distance/Time.deltaTime)
         {
             transform.position = transform.position + (Vector3)(Pos - (Vector2)transform.position).normalized * speed * Time.deltaTime;
             yield return null;
         }
         Instantiate(Card, hole.gameObject.transform);
-        Destroy(Shop._Instance.gameObject);
+        Shop._Instance.animator.Play("close");
+        //Destroy(Shop._Instance.gameObject);
         //Destroy(gameObject);
     }
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)

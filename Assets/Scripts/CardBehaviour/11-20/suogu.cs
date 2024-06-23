@@ -6,10 +6,9 @@ public class suogu : CardBehaviour
 {
     public override void OnAward(Card card)
     {
+        int GetMult_Basis = Mathf.RoundToInt(card.GetMult_Basis);
+        card.SetChip_Basis(GetMult_Basis+card.GetChip_Beton);
         card.SetMult(card.GetMult_Basis);
-        int GetMult = Mathf.RoundToInt(card.GetMult);
-        card.SetChip(GetMult + card.GetChip_Beton);
-
     }
     public override float OnSettle(Card card)
     {

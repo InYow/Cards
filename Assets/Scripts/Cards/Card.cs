@@ -20,8 +20,10 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     public CardBehaviour cardBehaviour;
     [HideInInspector]
     public CardScore cardScore;
-    private boss boss;
-
+    private BOSS boss;
+    public bool isPressing = false;
+    public float presstime;
+    public float presstimeorigin;
 
     public Hole GetHole { get => GetComponentsInParent<Hole>()[0]; }
     //
@@ -41,12 +43,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
         }
     }
     public NearCards GetNearCards()
-    {
-        int index = GetHoleIndex();
-        List<Hole> aholes = CardPool._Instance._Holes;
-        //left
-        Card left;
-        int leftIndex = index;
         /*        do
                 {
                     leftIndex--;
@@ -56,15 +52,6 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
                     }
                 } while (aholes[leftIndex].card == null);
         */
-        leftIndex--;
-        if (index < 0)
-        {
-            index += aholes.Count;
-        }
-        left = aholes[leftIndex].card;
-        //right
-        Card right;
-        int rightIndex = index;
         /*        do
                 {
                     rightIndex++;
@@ -74,10 +61,40 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
                     }
                 } while (aholes[rightIndex].card == null);
         */
-        rightIndex++;
-        if (index >= aholes.Count)
+    {
+        int index = GetHoleIndex();
+        List<Hole> aholes = CardPool._Instance._Holes;
+        List<Card> chosenCards = CardPool._Instance._ChosenCards;
+        //left
+        Card left;
+        int leftIndex = index;
+        if (index != 0)
         {
-            rightIndex -= aholes.Count;
+            leftIndex--;
+        }
+        else  if(index == 0)
+        {
+            leftIndex = chosenCards.Count;
+            while (aholes[leftIndex].card = null)
+            {
+                leftIndex--;
+            }
+        }
+        left = aholes[leftIndex].card;
+        //right
+        Card right;
+        int rightIndex = index;
+        if(index != aholes.Count)
+        {
+            rightIndex++;
+        }
+        else if(index == aholes.Count)
+        {
+            rightIndex = 0;
+            while (aholes[rightIndex].card = null)
+            {
+                rightIndex++;
+            }
         }
         right = aholes[rightIndex].card;
         NearCards near = new(left, right);
@@ -126,7 +143,7 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     private void Start()
     {
         GameObject BOSSGO = GameObject.Find("boss");
-        boss = BOSSGO.GetComponent<boss>();
+        boss = BOSSGO.GetComponent<BOSS>();
         if (cardData == null)
             Debug.Log($"{gameObject.name}没有绑定 CardData");
         if (cardBehaviour == null)
@@ -290,40 +307,82 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     [ContextMenu("加注")]
     public void AddChip(int chip)
     {
-        if (RoundManager._Instance.Gold == 0)
+        if (BOSS._Instance.number != 8)
         {
-            return;
-        }
-        else if (RoundManager._Instance.Gold >= chip)
-        {
-            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + chip);
-            RoundManager._Instance.Gold -= chip;
+            if (RoundManager._Instance.Gold == 0)
+            {
+                return;
+            }
+            else if (RoundManager._Instance.Gold >= chip)
+            {
+                cardScore.SetChip_BetOn(cardScore.GetChip_Beton + chip);
+                RoundManager._Instance.Gold -= chip;
+            }
+            else
+            {
+                cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.Gold);
+                RoundManager._Instance.Gold = 0;
+            }
         }
         else
         {
-            cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.Gold);
-            RoundManager._Instance.Gold = 0;
+            if (RoundManager._Instance.Gold == 0)
+            {
+                return;
+            }
+            else if (RoundManager._Instance.Gold >= chip*2)
+            {
+                cardScore.SetChip_BetOn(cardScore.GetChip_Beton + chip);
+                RoundManager._Instance.Gold -= chip*2;
+            }
+            else
+            {
+                return;
+                cardScore.SetChip_BetOn(cardScore.GetChip_Beton + RoundManager._Instance.Gold);
+                RoundManager._Instance.Gold = 0;
+            }
         }
         PlayerUI._Instance.SetremainChips(RoundManager._Instance.Gold);
         Infoer.infoer.SetText(this);
         //ShowChipText();
+        GameObject.Find("下注音效").GetComponent<AudioSource>().Play();
     }
     [ContextMenu("减注")]
     public void DetectChip(int chip)
     {
-        if (this.cardScore.GetChip_Beton == 0)
+        if (BOSS._Instance.number != 8)
         {
-            return;
-        }
-        else if (this.cardScore.GetChip_Beton >= chip)
-        {
-            RoundManager._Instance.Gold += chip;
-            cardScore.SetChip_BetOn(cardScore.GetChip_Beton - chip);
+            if (this.cardScore.GetChip_Beton == 0)
+            {
+                return;
+            }
+            else if (this.cardScore.GetChip_Beton >= chip)
+            {
+                RoundManager._Instance.Gold += chip;
+                cardScore.SetChip_BetOn(cardScore.GetChip_Beton - chip);
+            }
+            else
+            {
+                RoundManager._Instance.Gold += cardScore.GetChip_Beton;
+                cardScore.SetChip_BetOn(0);
+            }
         }
         else
         {
-            RoundManager._Instance.Gold += cardScore.GetChip_Beton;
-            cardScore.SetChip_BetOn(0);
+            if (this.cardScore.GetChip_Beton == 0)
+            {
+                return;
+            }
+            else if (this.cardScore.GetChip_Beton >= chip)
+            {
+                RoundManager._Instance.Gold += chip*2;
+                cardScore.SetChip_BetOn(cardScore.GetChip_Beton - chip);
+            }
+            else
+            {
+                RoundManager._Instance.Gold += cardScore.GetChip_Beton*2;
+                cardScore.SetChip_BetOn(0);
+            }
         }
         PlayerUI._Instance.SetremainChips(RoundManager._Instance.Gold);
         Infoer.infoer.SetText(this);
@@ -336,13 +395,17 @@ public class Card : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
     }
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (RoundManager._Instance.isRemoving != true)
         {
-            AddChip(1);
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            DetectChip(1);
+            if (Input.GetMouseButtonDown(0))
+            {
+                AddChip(1);
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                DetectChip(1);
+            }
+            isPressing = true;
         }
         //        Debug.Log(gameObject.name);
         //InfoChecker.infoChecker.CreateInfoIpt(new ItemInfo(cardData));

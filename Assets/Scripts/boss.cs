@@ -3,24 +3,59 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class boss : MonoBehaviour
+public class BOSS : MonoBehaviour
 {
+    public static BOSS _Instance;
     public Image imageBoss;
+    public TextMeshProUGUI textGUIL;
+    public TextMeshProUGUI textGUIR;
+    public GameObject BossRender;
+
     public Sprite bossSprite1;
+    public string boss1StrL;
+    public string boss1StrR;
+
     public Sprite bossSprite2;
-    public Sprite bossSprite3;
+    public string boss2StrL;
+    public string boss2StrR;
+
+    public Sprite bossSprite3; 
+    public string boss3StrL;
+    public string boss3StrR;
+
     public Sprite bossSprite4;
-    public Sprite bossSprite5;
-    public Sprite bossSprite6;
+    public string boss4StrL;
+    public string boss4StrR;
+
+    public Sprite bossSprite5; 
+    public string boss5StrL;
+    public string boss5StrR;
+
+    public Sprite bossSprite6; 
+    public string boss6StrL;
+    public string boss6StrR;
+
     public Sprite bossSprite7;
-    public Sprite bossSprite8;
+    public string boss7StrL;
+    public string boss7StrR;
+
+    public Sprite bossSprite8; 
+    public string boss8StrL;
+    public string boss8StrR;
+
 
     int currentIndex = 0;
     int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
     public int number = 0;
     public int boss4a;
     public int boss4b;
+    public List<int> bossScore;
+    private void Awake()
+    {
+        _Instance = this;
+    }
     void Start()
     {
         //数组排序
@@ -40,25 +75,34 @@ public class boss : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))        //之后更换为回合结束后触发
         {
-            if (currentIndex < numbers.Length)
-            {
-                CancelEffect(number);
-                List<Card> cards = CardPool._Instance._Cards;
-                foreach (var c in cards)
-                {
-                    c.Abandon(false);
-                }
-                number = numbers[currentIndex];
-                Debug.Log("当前数字：" + numbers[currentIndex]);
-                currentIndex++;
-                ApplyEffect(number);
-            }
-            else
-            {
-                Debug.Log("所有数字已经输出完毕");
-            }
+            ChangeBoss();
         }
-
+    }
+    public void ChangeBoss()
+    {
+        if (currentIndex < numbers.Length)
+        {
+            CancelEffect(number);
+            List<Card> cards = CardPool._Instance._Cards;
+            foreach (var c in cards)
+            {
+                c.Abandon(false);
+            }
+            number = numbers[currentIndex];
+            Debug.Log("当前数字：" + numbers[currentIndex]);
+            currentIndex++;
+            //BOSS离场动画
+            GameObject BossRender_N = Instantiate(BossRender, BossRender.transform.parent);
+            Animator animator_N = BossRender_N.GetComponent<Animator>();
+            animator_N.Play("out_dic");
+            //BOSS的效果生效
+            ApplyEffect(number);
+            
+        }
+        else
+        {
+            Debug.Log("所有数字已经输出完毕");
+        }
     }
     void ApplyEffect(int number)
     {
@@ -130,6 +174,8 @@ public class boss : MonoBehaviour
     void boss1()
     {
         imageBoss.sprite = bossSprite1; // 更换图片
+        textGUIL.text = boss1StrL;
+        textGUIR.text = boss1StrR;
         //RoundManager._Instance.score -= 10;
     }
     void boss1End()
@@ -139,6 +185,8 @@ public class boss : MonoBehaviour
     void boss2()
     {
         imageBoss.sprite = bossSprite2;
+        textGUIL.text = boss2StrL;
+        textGUIR.text = boss2StrR;
     }
     void boss2End()
     {
@@ -147,6 +195,8 @@ public class boss : MonoBehaviour
     void boss3()
     {
         imageBoss.sprite = bossSprite3;
+        textGUIL.text = boss3StrL;
+        textGUIR.text = boss3StrR;
     }
     void boss3End()
     {
@@ -155,6 +205,8 @@ public class boss : MonoBehaviour
     void boss4()
     {
         imageBoss.sprite = bossSprite4;
+        textGUIL.text = boss4StrL;
+        textGUIR.text = boss4StrR;
         List<Card> cards = CardPool._Instance._Cards;
         int a = UnityEngine.Random.Range(0, cards.Count);
         int b = UnityEngine.Random.Range(0, cards.Count);
@@ -176,6 +228,8 @@ public class boss : MonoBehaviour
     void boss5()
     {
         imageBoss.sprite = bossSprite5;
+        textGUIL.text = boss5StrL;
+        textGUIR.text = boss5StrR;
     }
     void boss5End()
     {
@@ -188,6 +242,8 @@ public class boss : MonoBehaviour
     void boss6()
     {
         imageBoss.sprite = bossSprite6;
+        textGUIL.text = boss6StrL;
+        textGUIR.text = boss6StrR;
     }
     void boss6End()
     {
@@ -196,6 +252,8 @@ public class boss : MonoBehaviour
     void boss7()
     {
         imageBoss.sprite = bossSprite7;
+        textGUIL.text = boss7StrL;
+        textGUIR.text = boss7StrR;
     }
     void boss7End()
     {
@@ -204,6 +262,8 @@ public class boss : MonoBehaviour
     void boss8()
     {
         imageBoss.sprite = bossSprite8;
+        textGUIL.text = boss8StrL;
+        textGUIR.text = boss8StrR;
     }
     void boss8End()
     {

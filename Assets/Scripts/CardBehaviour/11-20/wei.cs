@@ -14,9 +14,17 @@ public class wei : CardBehaviour
         {
             chip = nearCards.left.GetChip_Basis;
         }
+        else
+        {
+            chip = 0;
+        }
         if (nearCards.right != null)
         {
             mult = nearCards.right.GetMult_Basis;
+        }
+        else
+        {
+            mult = 0;
         }
     }
     public override void OnAward(Card card)

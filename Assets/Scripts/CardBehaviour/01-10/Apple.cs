@@ -13,6 +13,7 @@ public class Apple : CardBehaviour
     {
         float score = card.GetMult * card.GetChip;
         Debug.Log($"{name}的得分为{card.GetChip}（筹码） * {card.GetMult}（倍率） = {score} .");
+        //card.CardDestroy();
         return score;
     }
 }

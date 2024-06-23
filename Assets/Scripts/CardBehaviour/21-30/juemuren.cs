@@ -11,7 +11,7 @@ public class juemuren : CardBehaviour
         {
             if(item.cardData.sort == "¹ÇÍ·")
             {
-                card.SetMult_Basis(card.GetChip_Basis + 2);
+                card.SetChip_Basis(card.GetChip_Basis + 2);
             }
         }
         card.SetChip(card.GetChip_Basis + card.GetChip_Beton);
